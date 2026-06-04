@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="el" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Δρ. Σωτήριος Κατράνας | Ειδικός Καρδιολόγος Θεσσαλονίκη</title>
+    <meta name="description" content="Ο Δρ. Σωτήριος Κατράνας είναι Ειδικός Καρδιολόγος, Διδάκτωρ Α.Π.Θ., με εξειδίκευση στην Καρδιολογία Ακριβείας. Ιδιωτικό ιατρείο στη Θεσσαλονίκη.">
+    <meta name="keywords" content="Καρδιολόγος Θεσσαλονίκη, Σωτήριος Κατράνας, Καρδιολογία Ακριβείας, Triplex Καρδιάς, Holter, Μυοκαρδιοπάθειες">
+    <meta name="author" content="Advon Media">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="icon" href="https://raw.githubusercontent.com/agelmet/MARIOLIS/refs/heads/main/receer.jpg" type="image/jpeg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        med: {
+                            teal: '#2CA7A4',
+                            red: '#D61E1A',
+                            gray: '#DDDDDD',
+                            charcoal: '#111111',
+                            black: '#000000',
+                            light: '#F8F9FA'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.08)',
+                        'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'glow-teal': '0 0 40px -10px rgba(44, 167, 164, 0.5)',
+                        'glow-red': '0 0 40px -10px rgba(214, 30, 26, 0.5)',
+                    },
+                    animation: {
+                        'marquee': 'marquee 60s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #F8F9FA; }
+        ::-webkit-scrollbar-thumb { background: #2CA7A4; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1f8280; }
+
+        .no-accents { text-transform: uppercase; }
+
+        /* Reveal Animations */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.3s; }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .glass-panel-dark {
+            background: rgba(17, 17, 17, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Image Hover Effects */
+        .img-zoom { overflow: hidden; }
+        .img-zoom img { transition: transform 0.8s ease; }
+        .img-zoom:hover img { transform: scale(1.05); }
+
+        /* Marquee specific */
+        .marquee-container {
+            display: flex;
+            width: fit-content;
+        }
+        .marquee-container:hover {
+            animation-play-state: paused;
+        }
+
+        /* Lightbox styling */
+        #lightbox {
+            opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+        }
+        #lightbox.active { opacity: 1; pointer-events: auto; }
+        #lightbox img { transform: scale(0.95); transition: transform 0.4s ease; }
+        #lightbox.active img { transform: scale(1); }
+        
+        /* Service Cards Glow */
+        .service-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1), var(--tw-shadow-glow);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #2CA7A4 0%, #D61E1A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-med-light text-med-charcoal font-sans antialiased overflow-x-hidden selection:bg-med-teal selection:text-white">
+
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="glass-panel rounded-2xl flex justify-between items-center px-6 py-3 shadow-glass">
+                <a href="#" class="flex items-center gap-4 group">
+                    <img src="https://raw.githubusercontent.com/agelmet/MARIOLIS/refs/heads/main/receer.jpg" alt="Logo" class="h-14 w-14 rounded-xl object-cover drop-shadow-md transition-all duration-500 group-hover:scale-105 group-hover:shadow-glow-teal">
+                    <div class="hidden sm:block">
+                        <p class="font-serif font-bold text-med-black text-lg leading-tight">Δρ. Σωτήριος Κατράνας</p>
+                        <p class="text-xs text-med-teal font-medium tracking-wide">ΕΙΔΙΚΟΣ ΚΑΡΔΙΟΛΟΓΟΣ</p>
+                    </div>
+                </a>
+                
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-semibold text-med-charcoal hover:text-med-teal transition-colors">ΠΡΟΦΙΛ</a>
+                    <a href="#services" class="text-sm font-semibold text-med-charcoal hover:text-med-teal transition-colors">ΥΠΗΡΕΣΙΕΣ</a>
+                    <a href="#precision" class="text-sm font-semibold text-med-charcoal hover:text-med-teal transition-colors">ΙΑΤΡΙΚΗ ΑΚΡΙΒΕΙΑΣ</a>
+                    <a href="#space" class="text-sm font-semibold text-med-charcoal hover:text-med-teal transition-colors">ΙΑΤΡΕΙΟ</a>
+                    <a href="#reviews" class="text-sm font-semibold text-med-charcoal hover:text-med-teal transition-colors">ΑΞΙΟΛΟΓΗΣΕΙΣ</a>
+                    <a href="#contact" class="px-7 py-3 bg-med-teal text-white rounded-full text-sm font-bold hover:bg-med-black hover:shadow-lg transition-all transform hover:-translate-y-0.5">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ</a>
+                </div>
+
+                <button class="lg:hidden text-med-charcoal focus:outline-none" id="mobile-menu-btn">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl shadow-xl hidden flex-col items-center py-8 space-y-6 border-t border-med-gray">
+            <a href="#about" class="text-lg font-bold text-med-charcoal mobile-link">ΠΡΟΦΙΛ</a>
+            <a href="#services" class="text-lg font-bold text-med-charcoal mobile-link">ΥΠΗΡΕΣΙΕΣ</a>
+            <a href="#precision" class="text-lg font-bold text-med-charcoal mobile-link">ΙΑΤΡΙΚΗ ΑΚΡΙΒΕΙΑΣ</a>
+            <a href="#space" class="text-lg font-bold text-med-charcoal mobile-link">ΙΑΤΡΕΙΟ</a>
+            <a href="#reviews" class="text-lg font-bold text-med-charcoal mobile-link">ΑΞΙΟΛΟΓΗΣΕΙΣ</a>
+            <a href="#contact" class="px-8 py-3 bg-med-teal text-white rounded-full text-lg font-bold mobile-link">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden bg-med-black text-center">
+        <div class="absolute inset-0 z-0">
+            <img src="https://raw.githubusercontent.com/agelmet/KATRANAS/refs/heads/main/unnamed-12.jpg" alt="Background" class="w-full h-full object-cover object-center opacity-40">
+        </div>
+        
+        <div class="absolute inset-0 bg-gradient-to-b from-med-black/80 via-med-black/60 to-med-black/90 z-10"></div>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-med-teal/20 rounded-full blur-[120px] z-10 animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-med-red/10 rounded-full blur-[120px] z-10 animate-pulse-slow" style="animation-delay: 2s;"></div>
+
+        <div class="max-w-5xl mx-auto relative z-20 flex flex-col items-center">
+            <div class="reveal">
+                <div class="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-full glass-panel-dark text-white text-sm font-bold mb-8 border-med-teal/30 mx-auto">
+                    <span class="w-2.5 h-2.5 rounded-full bg-med-red animate-pulse"></span>
+                    ΚΑΡΔΙΟΛΟΓΙΚΟ ΙΑΤΡΕΙΟ ΘΕΣΣΑΛΟΝΙΚΗΣ
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif text-white leading-[1.15] mb-6 drop-shadow-2xl">
+                    Εξειδικευμένη Καρδιολογία Ακριβείας & <span class="text-med-teal">Ανώτατη Κλινική Εμπειρία</span>
+                </h1>
+                <p class="text-lg md:text-xl text-med-gray mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+                    Δρ. Σωτήριος Κατράνας, Ειδικός Καρδιολόγος, Διδάκτωρ Καρδιολογίας Α.Π.Θ.<br>
+                    Κορυφαία κλινική πρακτική με διεθνή εξειδίκευση.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+                    <a href="#contact" class="w-full sm:w-auto px-10 py-4 bg-med-teal text-white rounded-full font-bold hover:bg-white hover:text-med-teal transition-colors shadow-glow-teal flex items-center justify-center gap-2 group">
+                        ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ
+                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#about" class="w-full sm:w-auto px-10 py-4 bg-transparent border-2 border-white/40 text-white rounded-full font-bold hover:border-white hover:bg-white/10 transition-all backdrop-blur-sm flex items-center justify-center">
+                        ΓΝΩΡΙΣΤΕ ΜΑΣ
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-med-light to-transparent z-20"></div>
+    </section>
+
+    <section id="about" class="py-24 px-6 bg-med-light relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center">
+            
+            <div class="lg:col-span-5 relative reveal">
+                <div class="relative z-10 aspect-[3/4] rounded-[2rem] overflow-hidden shadow-2xl animate-float border-4 border-white">
+                    <img src="https://raw.githubusercontent.com/agelmet/KATRANAS/refs/heads/main/unnamed-17.jpg" alt="Δρ. Σωτήριος Κατράνας" class="w-full h-full object-cover object-center">
+                </div>
+                <div class="absolute top-10 -left-8 w-full h-full bg-med-teal rounded-[2rem] z-0 opacity-10"></div>
+                <div class="absolute -bottom-8 -right-8 w-40 h-40 bg-med-red/5 rounded-full blur-[30px] z-0"></div>
+            </div>
+
+            <div class="lg:col-span-7 reveal reveal-delay-2">
+                <span class="text-med-teal font-bold tracking-widest text-sm uppercase no-accents mb-2 block">ΤΟ ΠΡΟΦΙΛ</span>
+                <h2 class="text-4xl lg:text-5xl font-serif text-med-black mb-8 leading-tight">Δρ. Σωτήριος Κατράνας</h2>
+                
+                <div class="space-y-6 text-lg text-med-charcoal/80 leading-relaxed">
+                    <p>
+                        Ο <strong>Δρ. Σωτήριος Κατράνας</strong> είναι Ειδικός Καρδιολόγος, Διδάκτωρ Καρδιολογίας του Αριστοτελείου Πανεπιστημίου Θεσσαλονίκης (Α.Π.Θ.) και διατηρεί το σύγχρονο ιδιωτικό του ιατρείο στη Θεσσαλονίκη.
+                    </p>
+                    <p>
+                        Διαθέτει μια κορυφαία κλινική και ακαδημαϊκή πορεία, διατελώντας Ακαδημαϊκός / Επιστημονικός Συνεργάτης Μυοκαρδιοπαθειών στην Α' Καρδιολογική Κλινική του Α.Π.Θ. και Καρδιοπαθειών ασθενών με Νευρομυϊκά Νοσήματα στη Μονάδα Νευρομυϊκών Παθήσεων (MDA Hellas) στο Πανεπιστημιακό Νοσοκομείο ΑΧΕΠΑ. Παράλληλα, είναι ενεργός Ερευνητής στο Εθνικό Δίκτυο Ιατρικής Ακριβείας <strong>«GR-iCardiacNet»</strong>.
+                    </p>
+                    <blockquote class="border-l-4 border-med-red pl-6 py-4 my-8 text-xl font-serif text-med-black italic bg-white shadow-sm rounded-r-xl">
+                        "Στόχος μου είναι η ανώτατη επιστημονική γνώση να μεταφράζεται καθημερινά σε απόλυτη ασφάλεια για εσάς."
+                    </blockquote>
+                    <p>
+                        Μετά την ειδίκευσή του στο Π.Γ.Ν.Θ. ΑΧΕΠΑ, μετεκπαιδεύτηκε στα κορυφαία νοσοκομεία του Λονδίνου: <strong>Saint Bartholomew's Hospital</strong>, <strong>Royal Brompton Hospital</strong>, και στο <strong>Neuromuscular Complex Care Centre</strong>. Είναι αναγνωρισμένος ειδικός στις Νεότερες Τεχνικές Υπερήχων (διοισοφάγειο υπερηχογράφημα & stress echo). Αναλαμβάνει την πλήρη καρδιολογική κάλυψη ενηλίκων, καθώς και περιστατικά παιδιών έως 12 ετών.
+                    </p>
+                </div>
+                
+                <div class="mt-10 flex flex-wrap gap-4">
+                    <div class="flex items-center gap-3 bg-white px-5 py-3 rounded-xl shadow-sm border border-med-gray/50">
+                        <i data-lucide="award" class="text-med-teal w-6 h-6"></i>
+                        <span class="font-semibold text-sm">Διδάκτωρ Α.Π.Θ.</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white px-5 py-3 rounded-xl shadow-sm border border-med-gray/50">
+                        <i data-lucide="globe" class="text-med-teal w-6 h-6"></i>
+                        <span class="font-semibold text-sm">Μετεκπαίδευση στο Λονδίνο</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white px-5 py-3 rounded-xl shadow-sm border border-med-gray/50">
+                        <i data-lucide="microscope" class="text-med-teal w-6 h-6"></i>
+                        <span class="font-semibold text-sm">Ερευνητής GR-iCardiacNet</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 px-6 bg-white relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <span class="text-med-teal font-bold tracking-widest text-sm uppercase no-accents">ΕΞΕΙΔΙΚΕΥΜΕΝΕΣ ΥΠΗΡΕΣΙΕΣ</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-med-black mt-4 mb-6">Ολοκληρωμένη Καρδιολογική Φροντίδα</h2>
+                <div class="w-24 h-1.5 bg-med-teal mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="service-card bg-med-light p-10 rounded-[2rem] group relative overflow-hidden reveal shadow-soft border border-med-gray/30" style="--tw-shadow-glow: 0 0 40px -10px rgba(44, 167, 164, 0.2);">
+                    <div class="absolute -right-20 -top-20 w-64 h-64 bg-med-teal/10 rounded-full blur-[60px] group-hover:bg-med-teal/20 transition-colors duration-700"></div>
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="w-16 h-16 bg-white shadow-md rounded-2xl flex items-center justify-center mb-8 group-hover:-translate-y-2 transition-transform duration-500">
+                            <i data-lucide="activity" class="w-8 h-8 text-med-teal"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-med-black mb-4">Πλήρης Μη Επεμβατικός Καρδιολογικός Έλεγχος & Imaging</h3>
+                        <p class="text-med-charcoal/70 mb-8 text-base leading-relaxed flex-grow">
+                            Ολοκληρωμένη καρδιολογική παρακολούθηση με χρήση εξοπλισμού τελευταίας τεχνολογίας. Από ένα απλό ηλεκτροκαρδιογράφημα και triplex καρδιάς, μέχρι τη δοκιμασία κόπωσης (stress test) και την τοποθέτηση Holter ρυθμού για την καταγραφή αρρυθμιών.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 bg-white text-med-charcoal border border-med-gray text-xs font-bold rounded-lg">Επίσκεψη - 30'</span>
+                            <span class="px-3 py-1.5 bg-white text-med-charcoal border border-med-gray text-xs font-bold rounded-lg">Triplex & ΗΚΓ</span>
+                            <span class="px-3 py-1.5 bg-white text-med-charcoal border border-med-gray text-xs font-bold rounded-lg">Holter ρυθμού</span>
+                            <span class="px-3 py-1.5 bg-white text-med-charcoal border border-med-gray text-xs font-bold rounded-lg">Test Κοπώσεως</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card bg-med-light p-10 rounded-[2rem] group relative overflow-hidden reveal reveal-delay-1 shadow-soft border border-med-gray/30" style="--tw-shadow-glow: 0 0 40px -10px rgba(214, 30, 26, 0.2);">
+                    <div class="absolute -right-20 -top-20 w-64 h-64 bg-med-red/10 rounded-full blur-[60px] group-hover:bg-med-red/20 transition-colors duration-700"></div>
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="w-16 h-16 bg-white shadow-md rounded-2xl flex items-center justify-center mb-8 group-hover:-translate-y-2 transition-transform duration-500">
+                            <i data-lucide="heart-pulse" class="w-8 h-8 text-med-red"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-med-black mb-4">Εξειδικευμένη Αντιμετώπιση Κλινικών Καρδιοπαθειών</h3>
+                        <p class="text-med-charcoal/70 mb-8 text-base leading-relaxed flex-grow">
+                            Ρύθμιση και μακροχρόνια διαχείριση σοβαρών χρόνιων παθήσεων. Εξατομικευμένα θεραπευτικά πλάνα για ανθεκτική Αρτηριακή Πίεση, διαχείριση Καρδιακής Ανεπάρκειας, ρύθμιση δυσλιπιδαιμιών (χοληστερίνη) και έλεγχο Κολπικής Μαρμαρυγής.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 bg-white text-med-charcoal border border-med-gray text-xs font-bold rounded-lg">Αρτηριακή Πίεση</span>
+                            <span class="px-3 py-1.5 bg-white text-med-charcoal border border-med-gray text-xs font-bold rounded-lg">Καρδιακή Ανεπάρκεια</span>
+                            <span class="px-3 py-1.5 bg-white text-med-charcoal border border-med-gray text-xs font-bold rounded-lg">Κολπική Μαρμαρυγή</span>
+                            <span class="px-3 py-1.5 bg-white text-med-charcoal border border-med-gray text-xs font-bold rounded-lg">Λιπιδιολογία</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card bg-med-light p-10 rounded-[2rem] group relative overflow-hidden reveal shadow-soft border border-med-gray/30" style="--tw-shadow-glow: 0 0 40px -10px rgba(44, 167, 164, 0.2);">
+                    <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-med-teal/10 rounded-full blur-[60px] group-hover:bg-med-teal/20 transition-colors duration-700"></div>
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="w-16 h-16 bg-white shadow-md rounded-2xl flex items-center justify-center mb-8 group-hover:-translate-y-2 transition-transform duration-500">
+                            <i data-lucide="shield-check" class="w-8 h-8 text-med-teal"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-med-black mb-4">Προληπτικός Έλεγχος, Προαθλητική & Προεγχειρητική Καρδιολογία</h3>
+                        <p class="text-med-charcoal/70 mb-8 text-base leading-relaxed flex-grow">
+                            Ενδελεχής προαθλητικός έλεγχος σε παιδιά (έως 12 ετών) και ενήλικες, με άμεση έκδοση Κάρτας Υγείας Αθλητή. Εξειδικευμένος προεγχειρητικός έλεγχος για τη διασφάλιση μέγιστης ασφάλειας πριν από κάθε χειρουργική επέμβαση.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 bg-white text-med-charcoal border border-med-gray text-xs font-bold rounded-lg">Προαθλητικός Έλεγχος</span>
+                            <span class="px-3 py-1.5 bg-white text-med-charcoal border border-med-gray text-xs font-bold rounded-lg">Κάρτα Αθλητή</span>
+                            <span class="px-3 py-1.5 bg-white text-med-charcoal border border-med-gray text-xs font-bold rounded-lg">Προεγχειρητικός - 45'</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card bg-med-light p-10 rounded-[2rem] group relative overflow-hidden reveal reveal-delay-1 shadow-soft border border-med-gray/30" style="--tw-shadow-glow: 0 0 40px -10px rgba(17, 17, 17, 0.2);">
+                    <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-med-charcoal/5 rounded-full blur-[60px] group-hover:bg-med-charcoal/10 transition-colors duration-700"></div>
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="w-16 h-16 bg-white shadow-md rounded-2xl flex items-center justify-center mb-8 group-hover:-translate-y-2 transition-transform duration-500">
+                            <i data-lucide="file-signature" class="w-8 h-8 text-med-charcoal"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-med-black mb-4">Ηλεκτρονική Συνταγογράφηση & Παιδοκαρδιολογικός Έλεγχος</h3>
+                        <p class="text-med-charcoal/70 mb-8 text-base leading-relaxed flex-grow">
+                            Πλήρως πιστοποιημένο ιατρείο για ηλεκτρονική συνταγογράφηση (ΕΟΠΥΥ). Κλινική εμπειρία από τη 2η Παιδιατρική Κλινική του ΑΧΕΠΑ, αναλαμβάνοντας υπεύθυνα τον καρδιολογικό έλεγχο παιδιών έως 12 ετών.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 bg-white text-med-charcoal border border-med-gray text-xs font-bold rounded-lg">Συνταγογράφηση ΕΟΠΥΥ</span>
+                            <span class="px-3 py-1.5 bg-white text-med-charcoal border border-med-gray text-xs font-bold rounded-lg">Παιδιά έως 12 ετών</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="precision" class="py-24 px-6 bg-med-black text-white relative overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-20">
+            <div class="absolute top-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-med-teal blur-[120px]"></div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-med-red blur-[120px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-20 reveal">
+                <span class="text-med-teal font-bold tracking-widest text-sm uppercase no-accents">PRECISION MEDICINE</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-white mt-4">Η Καρδιολογία της Ακριβείας</h2>
+                <p class="text-med-gray mt-6 max-w-2xl mx-auto text-lg">Γιατί κάθε καρδιά χρειάζεται εξατομικευμένη "χαρτογράφηση".</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-panel-dark p-8 rounded-3xl group reveal">
+                    <i data-lucide="scan" class="w-12 h-12 text-med-teal mb-6"></i>
+                    <h4 class="text-xl font-bold text-white mb-4">Πέρα από το Τυπικό Υπερηχογράφημα</h4>
+                    <p class="text-med-gray text-sm leading-relaxed">
+                        Οι νεότερες τεχνικές υπερήχων (διοισοφάγειο και stress echo) επιτρέπουν την αξιολόγηση της καρδιάς σε πραγματικές συνθήκες πίεσης. Δεν περιμένουμε να εκδηλωθεί ένα επεισόδιο· προλαμβάνουμε τη ζημιά πριν συμβεί.
+                    </p>
+                </div>
+
+                <div class="glass-panel-dark p-8 rounded-3xl group reveal reveal-delay-1 mt-0 md:mt-8">
+                    <i data-lucide="dna" class="w-12 h-12 text-med-red mb-6"></i>
+                    <h4 class="text-xl font-bold text-white mb-4">Εξειδίκευση στις Μυοκαρδιοπάθειες</h4>
+                    <p class="text-med-gray text-sm leading-relaxed">
+                        Σύνθετες παθήσεις του μυοκαρδίου (και νευρομυϊκά νοσήματα) απαιτούν λεπτή, εξειδικευμένη ματιά. Η εμπειρία από το Neuromuscular Complex Care Centre του Λονδίνου μεταφέρεται απευθείας στους ασθενείς μας.
+                    </p>
+                </div>
+
+                <div class="glass-panel-dark p-8 rounded-3xl group reveal reveal-delay-2">
+                    <i data-lucide="book-open-check" class="w-12 h-12 text-white mb-6"></i>
+                    <h4 class="text-xl font-bold text-white mb-4">Η "Μετάφραση" της Γνώσης σε Φροντίδα</h4>
+                    <p class="text-med-gray text-sm leading-relaxed">
+                        Η ακαδημαϊκή έρευνα (PhD, ΑΧΕΠΑ, GR-iCardiacNet) αποκτά αξία όταν μεταφράζεται σε ασφάλεια για εσάς. Ο ασθενής γνωρίζει ακριβώς <em>γιατί</em> λαμβάνει την εκάστοτε θεραπεία.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-20 text-center reveal border-t border-white/10 pt-10">
+                <p class="text-2xl font-serif italic text-white/90 max-w-4xl mx-auto">
+                    "Η καρδιά σας δεν είναι απλώς ένας μυς· είναι ο κινητήρας της ζωής σας. Και κάθε κινητήρας χρειάζεται τη δική του, εξειδικευμένη και απόλυτα ακριβή φροντίδα."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="space" class="py-24 px-6 bg-med-light">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-serif mb-4 text-med-black">Το Σύγχρονο Ιατρείο Μας</h2>
+                <p class="text-med-charcoal/70 max-w-2xl mx-auto text-lg">Εξοπλισμός αιχμής σε ένα περιβάλλον σχεδιασμένο για την άνεση και την ασφάλειά σας.</p>
+            </div>
+
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                <button class="w-full break-inside-avoid rounded-2xl overflow-hidden group relative reveal shadow-md" onclick="openLightbox('https://raw.githubusercontent.com/agelmet/KATRANAS/refs/heads/main/unnamed-16.jpg')">
+                    <img src="https://raw.githubusercontent.com/agelmet/KATRANAS/refs/heads/main/unnamed-16.jpg" alt="Χώρος Ιατρείου" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-med-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="zoom-in" class="w-10 h-10 text-white"></i>
+                    </div>
+                </button>
+                <button class="w-full break-inside-avoid rounded-2xl overflow-hidden group relative reveal reveal-delay-1 shadow-md" onclick="openLightbox('https://raw.githubusercontent.com/agelmet/KATRANAS/refs/heads/main/unnamed-15.jpg')">
+                    <img src="https://raw.githubusercontent.com/agelmet/KATRANAS/refs/heads/main/unnamed-15.jpg" alt="Χώρος Ιατρείου" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-med-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="zoom-in" class="w-10 h-10 text-white"></i>
+                    </div>
+                </button>
+                <button class="w-full break-inside-avoid rounded-2xl overflow-hidden group relative reveal shadow-md" onclick="openLightbox('https://raw.githubusercontent.com/agelmet/KATRANAS/refs/heads/main/unnamed-14.jpg')">
+                    <img src="https://raw.githubusercontent.com/agelmet/KATRANAS/refs/heads/main/unnamed-14.jpg" alt="Χώρος Ιατρείου" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-med-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="zoom-in" class="w-10 h-10 text-white"></i>
+                    </div>
+                </button>
+                <button class="w-full break-inside-avoid rounded-2xl overflow-hidden group relative reveal reveal-delay-1 shadow-md" onclick="openLightbox('https://raw.githubusercontent.com/agelmet/KATRANAS/refs/heads/main/unnamed-13.jpg')">
+                    <img src="https://raw.githubusercontent.com/agelmet/KATRANAS/refs/heads/main/unnamed-13.jpg" alt="Χώρος Ιατρείου" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-med-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="zoom-in" class="w-10 h-10 text-white"></i>
+                    </div>
+                </button>
+                <button class="w-full break-inside-avoid rounded-2xl overflow-hidden group relative reveal reveal-delay-2 shadow-md" onclick="openLightbox('https://raw.githubusercontent.com/agelmet/KATRANAS/refs/heads/main/unnamed-12.jpg')">
+                    <img src="https://raw.githubusercontent.com/agelmet/KATRANAS/refs/heads/main/unnamed-12.jpg" alt="Χώρος Ιατρείου" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-med-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="zoom-in" class="w-10 h-10 text-white"></i>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center cursor-zoom-out" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white hover:text-med-red transition-colors">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="Enlarged View" class="max-w-[95vw] max-h-[95vh] object-contain rounded-lg shadow-2xl cursor-default" onclick="event.stopPropagation()">
+    </div>
+
+    <section id="reviews" class="py-24 bg-white overflow-hidden border-t border-med-gray/50">
+        <div class="max-w-7xl mx-auto px-6 mb-12 text-center reveal">
+            <span class="text-med-teal font-bold tracking-widest text-sm uppercase no-accents">ΕΜΠΕΙΡΙΕΣ ΑΣΘΕΝΩΝ</span>
+            <h2 class="text-4xl font-serif text-med-black mt-4 mb-4">Πάνω από 100 Άριστες Αξιολογήσεις</h2>
+            <p class="text-med-charcoal/70">Η εμπιστοσύνη σας είναι η μεγαλύτερη απόδειξη της ιατρικής μας προσέγγισης.</p>
+        </div>
+
+        <div class="w-full overflow-hidden relative pb-10">
+            <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+            
+            <div class="marquee-container animate-marquee">
+                <div class="flex space-x-6 px-3">
+                    
+                    <script>
+                        const reviews = [
+                            { score: "10.0", text: "Εξαιρετικός γιατρός, πολύ ευγενικός και επεξηγηματικός. Μου ενέπνευσε εμπιστοσύνη από την πρώτη στιγμή και αφιέρωσε χρόνο να ακούσει προσεκτικά το ιστορικό μου...", name: "Ευτυχία", count: "5 αξιολογήσεις" },
+                            { score: "10.0", text: "Καταπληκτικός γιατρός, κατανόησε το ζήτημα και έδωσε πρακτικές συμβουλές.", name: "Αγγελική", count: "1 αξιολόγηση" },
+                            { score: "10.0", text: "Ήταν το πρώτο ραντεβού με τον γιατρό και έμεινα πολύ ευχαριστημένη! Πολύ ευγενικός άνθρωπος και κατατοπιστικός.", name: "Ευγενια", count: "2 αξιολογήσεις" },
+                            { score: "10.0", text: "Εξαιρετικός καρδιολόγος! Πολύ προσεκτικός και αναλυτικός. Είμαι πολύ ικανοποιημένη!", name: "Νεκταρια", count: "2 αξιολογήσεις" },
+                            { score: "10.0", text: "Πολύ θετική εμπειρία. Επεξηγηματικός και καθησυχαστικός γιατρός που εμπνέει εμπιστοσύνη. Προσιτός, ευγενέστατος και φιλικός...", name: "Σάββας", count: "2 αξιολογήσεις" },
+                            { score: "10.0", text: "Φιλικός και εξυπηρετικός. Είχε την κατάρτιση ακριβώς πάνω στο θέμα μου.", name: "ΜΑΡΙΑ", count: "1 αξιολόγηση" },
+                            { score: "10.0", text: "Εκτός από τις γνώσεις του, ξεχώρισε για την ανθρωπιά και την κατανόησή του, αφιέρωσε χρόνο να μου εξηγήσει τα πάντα...", name: "Αναστασία", count: "2 αξιολογήσεις" },
+                            { score: "10.0", text: "ΕΞΑΙΡΕΤΙΚΟΣ. Αφιερώνει χρόνο, δεν βιάζεται να 'ξεπετάξει' τον ασθενή, δεν σε απελπίζει. Σου δίνει λύσεις και σου αναπτερώνει το ηθικό...", name: "ΑΘΑΝΑΣΙΑ", count: "3 αξιολογήσεις" },
+                            { score: "10.0", text: "Πολύ ευγενικός και αναλυτικος.", name: "Δέσποινα", count: "1 αξιολόγηση" },
+                            { score: "10.0", text: "Πολύ καλός, ευγενέστατος και ασχολήθηκε πολυ", name: "Δημητρης", count: "1 αξιολόγηση" },
+                            { score: "10.0", text: "Σωστός επαγγελματίας, συνεπής και κατατοπιστικός. Πολύ καλή εμπειρία συνολικά.", name: "ΜΑΡΙΑ", count: "1 αξιολόγηση" },
+                            { score: "10.0", text: "Διερεύνησε σε βάθος την περίπτωση μου και μου ενέπνευσε εμπιστοσύνη. Ευγενικός άνθρωπος και εξαιρετικός επιστήμων.", name: "ΣΩΚΡΑΤΗΣ", count: "6 αξιολογήσεις" },
+                            { score: "9.8", text: "Καλός καλος εξωτερικός αμέσως με εξέτασε και ασχολήθηκε foul του foul", name: "Ιωάννης", count: "2 αξιολογήσεις" },
+                            { score: "10.0", text: "Προσιτός, κατανοητός και άρτια καταρτισμένος ο γιατρός.", name: "Κρόντσος", count: "3 αξιολογήσεις" },
+                            { score: "10.0", text: "Ο γιατρός με εξέτασε αναλυτικά και έδειξε προσωπικό ενδιαφέρον. Τον συστήνω.", name: "Katsipis", count: "5 αξιολογήσεις" },
+                            { score: "10.0", text: "Έμπειρος και πολύ καλός γιατρός . Άριστος επιστήμονας με ανθρωπιά και φιλική προσέγγιση στους ασθενείς του!!", name: "Eleni", count: "1 αξιολόγηση" },
+                            { score: "9.8", text: "Ασχοληθηκε σε βαθος με την εξεταση, εμπειρος, συνεπεια στο ραντεβου.", name: "ΑΛΚΗΣ", count: "18 αξιολογήσεις" },
+                            { score: "9.8", text: "Εξαιρετικός γιατρός και άνθρωπος! Ήταν πολύ προσεκτικός, ευγενικός και απίστευτα επικοινωνιακός με το παιδί. Άψογος επαγγελματίας.", name: "ΜΑΡΙΟΣ ΚΩΝΣΤΑΝΤΙΝΟΣ", count: "1 αξιολόγηση" }
+                        ];
+
+                        // Duplicate array to ensure smooth infinite marquee
+                        const displayReviews = [...reviews, ...reviews];
+
+                        displayReviews.forEach(r => {
+                            document.write(`
+                                <div class="w-80 sm:w-96 bg-white p-8 rounded-3xl shadow-soft shrink-0 border border-med-gray/30 relative flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex justify-between items-start mb-4">
+                                            <div>
+                                                <div class="flex items-center gap-1 text-yellow-400 mb-1">
+                                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                                </div>
+                                                <span class="font-bold text-med-black">${r.score} / 10</span>
+                                            </div>
+                                            <img src="https://raw.githubusercontent.com/agelmet/KARAZOLI/refs/heads/main/lgoodoc.jpg" class="h-6" alt="Doctoranytime">
+                                        </div>
+                                        <p class="text-med-charcoal/80 text-sm mb-6 italic leading-relaxed">"${r.text}"</p>
+                                    </div>
+                                    <div class="border-t border-med-gray/50 pt-4 mt-auto">
+                                        <p class="text-xs font-bold text-med-black no-accents">${r.name}</p>
+                                        <p class="text-xs text-med-charcoal/50">${r.count}</p>
+                                    </div>
+                                </div>
+                            `);
+                        });
+                    </script>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-12 reveal">
+                <a href="https://www.doctoranytime.gr/d/Kardiologos/katranas-sotirios#review-section" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 bg-white border border-med-gray rounded-full text-sm font-bold text-med-black hover:shadow-lg hover:border-med-teal transition-all">
+                    Διαβάστε περισσότερα στο
+                    <img src="https://raw.githubusercontent.com/agelmet/KARAZOLI/refs/heads/main/lgoodoc.jpg" class="h-5" alt="Doctoranytime">
+                </a>
+                
+                <a href="https://www.google.com/search?client=safari&hs=Fw0p&sa=X&sca_esv=780a66cf752212b8&rls=en&biw=1728&bih=994&sxsrf=ANbL-n6JcdwTkENvzeFo-94GPoVzOcm_gw:1780565215391&q=Κατράνας+Σωτήριος+Καρδιολόγος+Reviews&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2NrUwMrMwNLSwMDM3tbA0MrM02sDI-IrR4dyscxvPt5xvPLfm3F4gq0nh3OLznedbzq0DCu08tx8kAFLReG4LiHtu9_mec5vBwkGpZZmp5cWLWCk2AgCbC5HUoAAAAA&rldimm=3582681188675892692&tbm=lcl&hl=en-GR&ved=2ahUKEwiXtqapou2UAxXkQvEDHZ_VNzQQ9fQKegQISRAI#lkt=LocalPoiReviews" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 bg-white border border-med-gray rounded-full text-sm font-bold text-med-black hover:shadow-lg hover:border-blue-500 transition-all">
+                    Αξιολογήσεις στη 
+                    <span class="text-blue-500 text-lg leading-none flex items-center">G<span class="text-red-500">o</span><span class="text-yellow-500">o</span>g<span class="text-green-500">l</span><span class="text-red-500">e</span></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-med-charcoal text-white pt-24 pb-10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[40rem] h-[40rem] bg-med-teal/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                
+                <div class="lg:col-span-2 reveal">
+                    <img src="https://raw.githubusercontent.com/agelmet/MARIOLIS/refs/heads/main/receer.jpg" alt="Logo" class="h-16 w-16 rounded-xl object-cover mb-6 border border-white/20 shadow-lg">
+                    <h3 class="text-2xl font-serif text-white mb-4">Δρ. Σωτήριος Κατράνας</h3>
+                    <p class="text-med-gray max-w-sm mb-8 leading-relaxed">
+                        Η προστασία της καρδιάς σας είναι προτεραιότητά μας. Επικοινωνήστε μαζί μας για να ορίσουμε την επόμενη επίσκεψή σας με ασφάλεια και υπευθυνότητα.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/p/Κατράνας-Σωτήριος-Καρδιολογικό-Ιατρείο-100063975486263/" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition-opacity">
+                            <img src="https://raw.githubusercontent.com/agelmet/Image-hosting-/refs/heads/main/icons8-facebook-480.png" alt="Facebook" class="w-10 h-10">
+                        </a>
+                        <a href="https://www.doctoranytime.gr/d/Kardiologos/katranas-sotirios" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition-opacity">
+                            <img src="https://raw.githubusercontent.com/agelmet/KARAZOLI/refs/heads/main/lgoodoc.jpg" alt="Doctoranytime" class="w-10 h-10 rounded-full bg-white object-contain p-1 border border-white/20">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="reveal reveal-delay-1">
+                    <h4 class="text-lg font-bold text-white mb-6 uppercase tracking-wider no-accents">ΣΤΟΙΧΕΙΑ ΕΠΙΚΟΙΝΩΝΙΑΣ</h4>
+                    <ul class="space-y-5 text-med-gray">
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="map-pin" class="w-6 h-6 text-med-teal shrink-0 mt-0.5"></i>
+                            <span class="leading-relaxed">Κωνσταντίνου Καραμανλή 145<br>(περιοχή Μαρτίου), Τ.Κ. 54249<br>Θεσσαλονίκη – 4ος όροφος</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <i data-lucide="phone" class="w-6 h-6 text-med-teal shrink-0"></i>
+                            <div class="flex flex-col">
+                                <a href="tel:+302314022108" class="hover:text-white transition-colors">2314 0 22108</a>
+                                <a href="tel:+306974503419" class="hover:text-white transition-colors">697 450 3419</a>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <i data-lucide="mail" class="w-6 h-6 text-med-teal shrink-0"></i>
+                            <a href="mailto:sotiriskatranas@yahoo.com" class="hover:text-white transition-colors">sotiriskatranas@yahoo.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="reveal reveal-delay-2">
+                    <h4 class="text-lg font-bold text-white mb-6 uppercase tracking-wider no-accents">ΩΡΑΡΙΟ ΛΕΙΤΟΥΡΓΙΑΣ</h4>
+                    <ul class="space-y-4 text-med-gray">
+                        <li class="flex items-center gap-4">
+                            <i data-lucide="clock" class="w-6 h-6 text-med-teal shrink-0"></i>
+                            <span class="no-accents font-semibold">ΔΕΥΤΕΡΑ - ΣΑΒΒΑΤΟ</span>
+                        </li>
+                        <li class="pl-10 text-sm text-med-red font-bold uppercase tracking-wider">
+                            Κατόπιν Ραντεβού
+                        </li>
+                    </ul>
+                    
+                    <a href="https://www.doctoranytime.gr/d/Kardiologos/katranas-sotirios" target="_blank" class="mt-8 inline-flex items-center justify-center w-full bg-white text-med-black px-6 py-4 rounded-xl font-bold hover:bg-med-teal hover:text-white transition-colors duration-300 shadow-md">
+                        Κλείστε Ραντεβού
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 reveal">
+                <p class="text-med-gray/60 text-sm">© 2026 Δρ. Σωτήριος Κατράνας. Όλα τα δικαιώματα διατηρούνται.</p>
+                <p class="text-med-gray/60 text-sm">
+                    Designed by <a href="https://advonmedia.com" target="_blank" rel="noopener" class="text-white font-bold hover:text-med-teal transition-colors">Advon Media</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Initialize Lucide Icons
+        lucide.createIcons();
+
+        // 2. Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+        });
+
+        // 3. Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('bg-white/95');
+                navbar.querySelector('.glass-panel').classList.remove('bg-white/90');
+                navbar.querySelector('.glass-panel').classList.add('bg-transparent', 'border-transparent', 'shadow-none');
+            } else {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2');
+                navbar.classList.remove('bg-white/95');
+                navbar.querySelector('.glass-panel').classList.add('bg-white/90');
+                navbar.querySelector('.glass-panel').classList.remove('bg-transparent', 'border-transparent', 'shadow-none');
+            }
+        });
+
+        // 4. Scroll Reveal Animations (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 5. Lightbox Functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(imageSrc) {
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            setTimeout(() => {
+                lightboxImg.src = '';
+                document.body.style.overflow = '';
+            }, 400);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
