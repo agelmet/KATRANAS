@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="el" class="scroll-smooth">
-<head>
+<!DOCTYPE html><html lang="el" class="scroll-smooth"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -16,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
@@ -110,9 +109,7 @@
         }
     </style>
 
-    <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body class="bg-med-light text-med-charcoal font-sans antialiased overflow-x-hidden selection:bg-med-red selection:text-white">
+    <script src="https://unpkg.com/lucide@latest"></script></head><body class="bg-med-light text-med-charcoal font-sans antialiased overflow-x-hidden selection:bg-med-red selection:text-white">
 
     <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-6 py-4">
@@ -400,52 +397,7 @@
             <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
             
             <div class="marquee-container animate-marquee">
-                <div class="flex space-x-6 px-3">
-                    <script>
-                        const reviews = [
-                            { score: "10.0", text: "Εξαιρετικός γιατρός, πολύ ευγενικός και επεξηγηματικός. Μου ενέπνευσε εμπιστοσύνη από την πρώτη στιγμή και αφιέρωσε χρόνο να ακούσει προσεκτικά το ιστορικό μου...", name: "Ευτυχία" },
-                            { score: "10.0", text: "Καταπληκτικός γιατρός, κατανόησε το ζήτημα και έδωσε πρακτικές συμβουλές.", name: "Αγγελική" },
-                            { score: "10.0", text: "Ήταν το πρώτο ραντεβού με τον γιατρό και έμεινα πολύ ευχαριστημένη! Πολύ ευγενικός άνθρωπος και κατατοπιστικός.", name: "Ευγενια" },
-                            { score: "10.0", text: "Εξαιρετικός καρδιολόγος! Πολύ προσεκτικός και αναλυτικός. Είμαι πολύ ικανοποιημένη!", name: "Νεκταρια" },
-                            { score: "10.0", text: "Πολύ θετική εμπειρία. Επεξηγηματικός και καθησυχαστικός γιατρός που εμπνέει εμπιστοσύνη. Προσιτός, ευγενέστατος και φιλικός...", name: "Σάββας" },
-                            { score: "10.0", text: "Φιλικός και εξυπηρετικός. Είχε την κατάρτιση ακριβώς πάνω στο θέμα μου.", name: "ΜΑΡΙΑ" },
-                            { score: "10.0", text: "Εκτός από τις γνώσεις του, ξεχώρισε για την ανθρωπιά και την κατανόησή του, αφιέρωσε χρόνο να μου εξηγήσει τα πάντα...", name: "Αναστασία" },
-                            { score: "10.0", text: "ΕΞΑΙΡΕΤΙΚΟΣ. Αφιερώνει χρόνο, δεν βιάζεται να 'ξεπετάξει' τον ασθενή, δεν σε απελπίζει. Σου δίνει λύσεις και σου αναπτερώνει το ηθικό...", name: "ΑΘΑΝΑΣΙΑ" },
-                            { score: "10.0", text: "Πολύ ευγενικός και αναλυτικος.", name: "Δέσποινα" },
-                            { score: "10.0", text: "Πολύ καλός, ευγενέστατος και ασχολήθηκε πολυ", name: "Δημητρης" },
-                            { score: "10.0", text: "Σωστός επαγγελματίας, συνεπής και κατατοπιστικός. Πολύ καλή εμπειρία συνολικά.", name: "ΜΑΡΙΑ" },
-                            { score: "10.0", text: "Διερεύνησε σε βάθος την περίπτωση μου και μου ενέπνευσε εμπιστοσύνη. Ευγενικός άνθρωπος και εξαιρετικός επιστήμων.", name: "ΣΩΚΡΑΤΗΣ" },
-                            { score: "9.8", text: "Καλός καλος εξωτερικός αμέσως με εξέτασε και ασχολήθηκε foul του foul", name: "Ιωάννης" },
-                            { score: "10.0", text: "Προσιτός, κατανοητός και άρτια καταρτισμένος ο γιατρός.", name: "Κρόντσος" },
-                            { score: "10.0", text: "Ο γιατρός με εξέτασε αναλυτικά και έδειξε προσωπικό ενδιαφέρον. Τον συστήνω.", name: "Katsipis" },
-                            { score: "10.0", text: "Έμπειρος και πολύ καλός γιατρός . Άριστος επιστήμονας με ανθρωπιά και φιλική προσέγγιση στους ασθενείς του!!", name: "Eleni" },
-                            { score: "9.8", text: "Ασχοληθηκε σε βαθος με την εξεταση, εμπειρος, συνεπεια στο ραντεβου.", name: "ΑΛΚΗΣ" },
-                            { score: "9.8", text: "Εξαιρετικός γιατρός και άνθρωπος! Ήταν πολύ προσεκτικός, ευγενικός και απίστευτα επικοινωνιακός με το παιδί. Άψογος επαγγελματίας.", name: "ΜΑΡΙΟΣ ΚΩΝΣΤΑΝΤΙΝΟΣ" }
-                        ];
-
-                        const displayReviews = [...reviews, ...reviews];
-
-                        displayReviews.forEach(r => {
-                            document.write(`
-                                <div class="w-80 sm:w-96 bg-white p-8 rounded-3xl shadow-soft shrink-0 border border-med-gray/50 relative flex flex-col justify-between hover:border-med-teal transition-colors">
-                                    <div>
-                                        <div class="flex justify-between items-start mb-4">
-                                            <div class="flex items-center gap-1 text-yellow-400 mb-1">
-                                                <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                                            </div>
-                                            <span class="font-bold text-med-black">${r.score} / 10</span>
-                                        </div>
-                                        <p class="text-med-charcoal text-sm mb-6 italic leading-relaxed">"${r.text}"</p>
-                                    </div>
-                                    <div class="border-t border-med-gray/50 pt-4 mt-auto">
-                                        <p class="text-xs font-bold text-med-black no-accents">${r.name}</p>
-                                        <p class="text-xs text-med-teal">Επιβεβαιωμένος Ασθενής</p>
-                                    </div>
-                                </div>
-                            `);
-                        });
-                    </script>
-                </div>
+                <div class="flex space-x-6 px-3" id="reviews-container"></div>
             </div>
             
             <div class="flex justify-center mt-12 reveal">
@@ -567,15 +519,17 @@
             <h3 class="text-2xl font-serif text-med-black mb-2">Η Αξιολόγησή σας</h3>
             <p class="text-sm text-med-charcoal/70 mb-6 border-b pb-4">Μοιραστείτε την εμπειρία σας μαζί μας.</p>
             
-            <form id="review-form" onsubmit="submitReview(event)">
+            <form id="review-form" name="patient-reviews" method="POST" data-netlify="true" onsubmit="submitReview(event)">
+                <input type="hidden" name="form-name" value="patient-reviews" />
+                
                 <div class="mb-4">
                     <label class="block text-sm font-bold text-med-charcoal mb-2" for="rev-name">Ονοματεπώνυμο *</label>
-                    <input type="text" id="rev-name" required class="w-full border border-med-gray rounded-xl p-3 text-med-charcoal focus:outline-none focus:border-med-teal">
+                    <input type="text" id="rev-name" name="patient-name" required class="w-full border border-med-gray rounded-xl p-3 text-med-charcoal focus:outline-none focus:border-med-teal">
                 </div>
                 
                 <div class="mb-6">
                     <label class="block text-sm font-bold text-med-charcoal mb-2" for="rev-text">Σχόλιο *</label>
-                    <textarea id="rev-text" required rows="4" class="w-full border border-med-gray rounded-xl p-3 text-med-charcoal focus:outline-none focus:border-med-teal"></textarea>
+                    <textarea id="rev-text" name="patient-msg" required rows="4" class="w-full border border-med-gray rounded-xl p-3 text-med-charcoal focus:outline-none focus:border-med-teal"></textarea>
                 </div>
 
                 <button type="submit" class="w-full bg-med-black text-white font-bold py-4 rounded-xl hover:bg-med-teal transition-colors">
@@ -600,10 +554,77 @@
     </div>
 
     <script>
-        // 1. Initialize Icons
-        lucide.createIcons();
+        // Default Review Dataset Fallback Pool
+        const defaultReviews = [
+            { score: "10.0", text: "Εξαιρετικός γιατρός, πολύ ευγενικός και επεξηγηματικός. Μου ενέπνευσε εμπιστοσύνη από την πρώτη στιγμή και αφιέρωσε χρόνο να ακούσει προσεκτικά το ιστορικό μου...", name: "Ευτυχία" },
+            { score: "10.0", text: "Καταπληκτικός γιατρός, κατανόησε το ζήτημα και έδωσε πρακτικές συμβουλές.", name: "Αγγελική" },
+            { score: "10.0", text: "Ήταν το πρώτο ραντεβού με τον γιατρό και έμεινα πολύ ευχαριστημένη! Πολύ ευγενικός άνθρωπος και κατατοπιστικός.", name: "Ευγενια" },
+            { score: "10.0", text: "Εξαιρετικός καρδιολόγος! Πολύ προσεκτικός και αναλυτικός. Είμαι πολύ ικανοποιημένη!", name: "Νεκταρια" },
+            { score: "10.0", text: "Πολύ θετική εμπειρία. Επεξηγηματικός και καθησυχαστικός γιατρός που εμπνέει εμπιστοσύνη. Προσιτός, ευγενέστατος και φιλικός...", name: "Σάββας" },
+            { score: "10.0", text: "Φιλικός και εξυπηρετικός. Είχε την κατάρτιση ακριβώς πάνω στο θέμα μου.", name: "ΜΑΡΙΑ" },
+            { score: "10.0", text: "Εκτός από τις γνώσεις του, ξεχώρισε για την ανθρωπιά και την κατανόησή του, αφιέρωσε χρόνο να μου εξηγήσει τα πάντα...", name: "Αναστασία" },
+            { score: "10.0", text: "ΕΞΑΙΡΕΤΙΚΟΣ. Αφιερώνει χρόνο, δεν βιάζεται να 'ξεπετάξει' τον ασθενή, δεν σε απελπίζει. Σου δίνει λύσεις και σου αναπτερώνει το ηθικό...", name: "ΑΘΑΝΑΣΙΑ" },
+            { score: "10.0", text: "Πολύ ευγενικός και αναλυτικος.", name: "Δέσποινα" },
+            { score: "10.0", text: "Πολύ καλός, ευγενέστατος και ασχολήθηκε πολυ", name: "Δημητρης" },
+            { score: "10.0", text: "Σωστός επαγγελματίας, συνεπής και κατατοπιστικός. Πολύ καλή εμπειρία συνολικά.", name: "ΜΑΡΙΑ" },
+            { score: "10.0", text: "Διερεύνησε σε βάθος την περίπτωση μου και μου ενέπνευσε εμπιστοσύνη. Ευγενικός άνθρωπος και εξαιρετικός επιστήμων.", name: "ΣΩΚΡΑΤΗΣ" },
+            { score: "9.8", text: "Καλός καλος εξωτερικός αμέσως με εξέτασε και ασχολήθηκε foul του foul", name: "Ιωάννης" },
+            { score: "10.0", text: "Προσιτός, κατανοητός και άρτια καταρτισμένος ο γιατρός.", name: "Κρόντσος" },
+            { score: "10.0", text: "Ο γιατρός με εξέτασε αναλυτικά και έδειξε προσωπικό ενδιαφέρον. Τον συστήνω.", name: "Katsipis" },
+            { score: "10.0", text: "Έμπειρος και πολύ καλός γιατρός . Άριστος επιστήμονας με ανθρωπιά και φιλική προσέγγιση στους ασθενείς του!!", name: "Eleni" },
+            { score: "9.8", text: "Ασχοληθηκε σε βαθος με την εξεταση, εμπειρος, συνεπεια στο ραντεβου.", name: "ΑΛΚΗΣ" },
+            { score: "9.8", text: "Εξαιρετικός γιατρός και άνθρωπος! Ήταν πολύ προσεκτικός, ευγενικός και απίστευτα επικοινωνιακός με το παιδί. Άψογος επαγγελματίας.", name: "ΜΑΡΙΟΣ ΚΩΝΣΤΑΝΤΙΝΟΣ" }
+        ];
 
-        // 2. Mobile Menu
+        // Dynamic Loading Engine via AJAX Local Lookup 
+        async function loadActiveReviews() {
+            const displayPool = document.getElementById('reviews-container');
+            let workingSet = defaultReviews;
+
+            try {
+                const query = await fetch('/reviews.json');
+                if (query.ok) {
+                    const parsedData = await query.json();
+                    if (Array.isArray(parsedData)) {
+                        workingSet = parsedData;
+                    } else if (parsedData && Array.isArray(parsedData.reviews)) {
+                        workingSet = parsedData.reviews;
+                    }
+                }
+            } catch (err) {
+                console.log("Decap CMS reviews not generated yet. Running default fallback data.");
+            }
+
+            // Loop twice to handle beautiful seamless marquee infinite scroll spacing
+            const doubleLoop = [...workingSet, ...workingSet];
+            displayPool.innerHTML = doubleLoop.map(r => `
+                <div class="w-80 sm:w-96 bg-white p-8 rounded-3xl shadow-soft shrink-0 border border-med-gray/50 relative flex flex-col justify-between hover:border-med-teal transition-colors">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center gap-1 text-yellow-400 mb-1">
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            </div>
+                            <span class="font-bold text-med-black">${r.score} / 10</span>
+                        </div>
+                        <p class="text-med-charcoal text-sm mb-6 italic leading-relaxed">"${r.text}"</p>
+                    </div>
+                    <div class="border-t border-med-gray/50 pt-4 mt-auto">
+                        <p class="text-xs font-bold text-med-black no-accents">${r.name}</p>
+                        <p class="text-xs text-med-teal">Επιβεβαιωμένος Ασθενής</p>
+                    </div>
+                </div>
+            `).join('');
+
+            if (window.lucide) lucide.createIcons();
+        }
+
+        // Initialize Everything on Screen Fire
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            loadActiveReviews();
+        });
+
+        // Mobile Menu
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -620,7 +641,7 @@
             });
         });
 
-        // 3. Navbar Scroll Effect
+        // Navbar Scroll Effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -638,7 +659,7 @@
             }
         });
 
-        // 4. Scroll Reveal
+        // Scroll Reveal
         const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -651,7 +672,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // 5. Lightbox
+        // Lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
 
@@ -671,7 +692,7 @@
             }, 400);
         }
 
-        // 6. Booking Modal logic
+        // Booking Modal logic
         const bookingModal = document.getElementById('booking-modal');
         
         function openBookingModal() {
@@ -690,14 +711,12 @@
 
         function submitBooking(e) {
             e.preventDefault();
-            // Redirect to Google Calendar Link
-            // Placeholder link as requested: "a link will be given after"
             const calendarLink = "https://calendar.google.com/";
             window.open(calendarLink, '_blank');
             closeBookingModal();
         }
 
-        // 7. Review Modal logic
+        // Review Modal Netlify Asynchronous Post Wrapper
         const reviewModal = document.getElementById('review-modal');
         const reviewForm = document.getElementById('review-form');
         const reviewSuccess = document.getElementById('review-success');
@@ -721,10 +740,31 @@
 
         function submitReview(e) {
             e.preventDefault();
-            // This hides the form and shows the pending approval success message
-            reviewForm.style.display = 'none';
-            reviewSuccess.classList.remove('hidden');
-            // Logic to send data to GoHighLevel workflow or DB goes here.
+            const form = e.target;
+            const data = new FormData(form);
+            
+            // Asynchronously post payload data securely directly into Netlify Forms internal parser
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(data).toString()
+            })
+            .then(() => {
+                reviewForm.style.display = 'none';
+                reviewSuccess.classList.remove('hidden');
+            })
+            .catch((error) => alert("Σφάλμα συστήματος κατά την υποβολή: " + error));
+        }
+
+        // Netlify Identity System Gateway Auto Redirect Handler
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
         }
 
         // Close Modals on Escape
@@ -735,6 +775,4 @@
                 if (reviewModal.classList.contains('active')) closeReviewModal();
             }
         });
-    </script>
-</body>
-</html>
+    </script></body></html>
