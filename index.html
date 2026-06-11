@@ -94,11 +94,11 @@
         .marquee-container { display: flex; width: fit-content; }
         .marquee-container:hover { animation-play-state: paused; }
 
-        #lightbox, #booking-modal, #review-modal {
+        #lightbox, #review-modal {
             opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
             backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
         }
-        #lightbox.active, #booking-modal.active, #review-modal.active { opacity: 1; pointer-events: auto; }
+        #lightbox.active, #review-modal.active { opacity: 1; pointer-events: auto; }
         #lightbox img { transform: scale(0.95); transition: transform 0.4s ease; }
         #lightbox.active img { transform: scale(1); }
         
@@ -124,7 +124,7 @@
                     <a href="#precision" class="text-sm font-semibold text-med-black hover:text-med-red transition-colors">ΙΑΤΡΙΚΗ ΑΚΡΙΒΕΙΑΣ</a>
                     <a href="#space" class="text-sm font-semibold text-med-black hover:text-med-red transition-colors">ΙΑΤΡΕΙΟ</a>
                     <a href="#reviews" class="text-sm font-semibold text-med-black hover:text-med-red transition-colors">ΑΞΙΟΛΟΓΗΣΕΙΣ</a>
-                    <button onclick="openBookingModal()" class="px-7 py-3 bg-med-red text-white rounded-full text-sm font-bold hover:bg-med-black hover:shadow-lg transition-all transform hover:-translate-y-0.5 shadow-glow-red">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ</button>
+                    <a href="#contact" class="px-7 py-3 bg-med-red text-white rounded-full text-sm font-bold hover:bg-med-black hover:shadow-lg transition-all transform hover:-translate-y-0.5 shadow-glow-red">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ</a>
                 </div>
 
                 <button class="lg:hidden text-med-black focus:outline-none" id="mobile-menu-btn">
@@ -139,7 +139,7 @@
             <a href="#precision" class="text-lg font-bold text-med-black mobile-link">ΙΑΤΡΙΚΗ ΑΚΡΙΒΕΙΑΣ</a>
             <a href="#space" class="text-lg font-bold text-med-black mobile-link">ΙΑΤΡΕΙΟ</a>
             <a href="#reviews" class="text-lg font-bold text-med-black mobile-link">ΑΞΙΟΛΟΓΗΣΕΙΣ</a>
-            <button onclick="openBookingModal(); document.getElementById('mobile-menu').classList.add('hidden');" class="px-8 py-3 bg-med-red text-white rounded-full text-lg font-bold shadow-glow-red">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ</button>
+            <a href="#contact" onclick="document.getElementById('mobile-menu').classList.add('hidden');" class="px-8 py-3 bg-med-red text-white rounded-full text-lg font-bold shadow-glow-red">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ</a>
         </div>
     </nav>
 
@@ -166,10 +166,10 @@
                     Διδάκτωρ Καρδιολογίας Α.Π.Θ.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-                    <button onclick="openBookingModal()" class="w-full sm:w-auto px-10 py-4 bg-med-red text-white rounded-full font-bold hover:bg-white hover:text-med-red transition-colors shadow-glow-red flex items-center justify-center gap-2 group">
+                    <a href="#contact" class="w-full sm:w-auto px-10 py-4 bg-med-red text-white rounded-full font-bold hover:bg-white hover:text-med-red transition-colors shadow-glow-red flex items-center justify-center gap-2 group">
                         ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ
                         <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                    </button>
+                    </a>
                     <a href="#about" class="w-full sm:w-auto px-10 py-4 bg-transparent border-2 border-white/60 text-white rounded-full font-bold hover:border-white hover:bg-white/20 transition-all backdrop-blur-md flex items-center justify-center shadow-lg">
                         ΓΝΩΡΙΣΤΕ ΜΑΣ
                     </a>
@@ -459,9 +459,9 @@
                         </li>
                     </ul>
                     
-                    <button onclick="openBookingModal()" class="mt-8 inline-flex items-center justify-center w-full bg-med-red text-white px-6 py-4 rounded-xl font-bold hover:bg-white hover:text-med-red transition-colors duration-300 shadow-glow-red">
+                    <a href="#contact" class="mt-8 inline-flex items-center justify-center w-full bg-med-red text-white px-6 py-4 rounded-xl font-bold hover:bg-white hover:text-med-red transition-colors duration-300 shadow-glow-red">
                         Κλείστε Ραντεβού
-                    </button>
+                    </a>
                 </div>
 
             </div>
@@ -474,42 +474,6 @@
             </div>
         </div>
     </footer>
-
-    <div id="booking-modal" class="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center hidden">
-        <div class="bg-white rounded-3xl p-8 max-w-lg w-full mx-4 shadow-2xl relative">
-            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-med-charcoal hover:text-med-red transition-colors">
-                <i data-lucide="x" class="w-8 h-8"></i>
-            </button>
-            <h3 class="text-2xl font-serif text-med-black mb-6 border-b pb-4">Επιλογή Ραντεβού</h3>
-            
-            <form id="booking-form" onsubmit="submitBooking(event)">
-                <div class="mb-6">
-                    <label class="block text-sm font-bold text-med-charcoal mb-2" for="reason">Αιτιολογία Επίσκεψης *</label>
-                    <select id="reason" required class="w-full border border-med-gray rounded-xl p-3 text-med-charcoal focus:outline-none focus:border-med-teal focus:ring-1 focus:ring-med-teal">
-                        <option value="" disabled selected>Επιλέξτε Υπηρεσία</option>
-                        <option value="Δελτίο αθλητή / προαθλητικός έλεγχος">Δελτίο αθλητή / προαθλητικός έλεγχος [Διάρκεια: 15']</option>
-                        <option value="Ηλεκτροκαρδιογράφημα">Ηλεκτροκαρδιογράφημα [Διάρκεια: 15']</option>
-                        <option value="Απλή καρδιολογική εξέταση (χωρίς triplex)">Απλή καρδιολογική εξέταση (δεν περιλαμβάνει triplex καρδιάς) [Διάρκεια: 30']</option>
-                        <option value="Πλήρης καρδιολογική εξέταση (με triplex)">Πλήρης καρδιολογική εξέταση (περιλαμβάνει triplex καρδιάς) [Διάρκεια: 30']</option>
-                        <option value="Προεγχειρητικός έλεγχος (με triplex)">Προεγχειρητικός έλεγχος (περιλαμβάνει triplex καρδιάς) [Διάρκεια: 30']</option>
-                        <option value="Holter καρδιακού ρυθμού">Holter καρδιακού ρυθμού [Διάρκεια: 15']</option>
-                        <option value="Δοκιμασία κοπώσεως">Δοκιμασία κοπώσεως [Διάρκεια: 30']</option>
-                        <option value="Συνταγογράφηση">Συνταγογράφηση [Διάρκεια: 15']</option>
-                    </select>
-                </div>
-                
-                <div class="mb-8">
-                    <label class="block text-sm font-bold text-med-charcoal mb-2" for="phone">Αριθμός Τηλεφώνου *</label>
-                    <input type="tel" id="phone" required placeholder="π.χ. 6900000000" class="w-full border border-med-gray rounded-xl p-3 text-med-charcoal focus:outline-none focus:border-med-teal focus:ring-1 focus:ring-med-teal">
-                    <p class="text-xs text-med-charcoal/60 mt-2">Το τηλέφωνο είναι υποχρεωτικό για την άμεση επικοινωνία/επιβεβαίωση του ραντεβού.</p>
-                </div>
-
-                <button type="submit" class="w-full bg-med-teal text-white font-bold py-4 rounded-xl hover:bg-med-black transition-colors flex justify-center items-center gap-2">
-                    Συνέχεια στο Ημερολόγιο <i data-lucide="calendar" class="w-5 h-5"></i>
-                </button>
-            </form>
-        </div>
-    </div>
 
     <div id="review-modal" class="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center hidden">
         <div class="bg-white rounded-3xl p-8 max-w-lg w-full mx-4 shadow-2xl relative">
@@ -585,11 +549,14 @@
                 const query = await fetch('/reviews.json');
                 if (query.ok) {
                     const parsedData = await query.json();
+                    let cmsReviews = [];
                     if (Array.isArray(parsedData)) {
-                        workingSet = parsedData;
+                        cmsReviews = parsedData;
                     } else if (parsedData && Array.isArray(parsedData.reviews)) {
-                        workingSet = parsedData.reviews;
+                        cmsReviews = parsedData.reviews;
                     }
+                    // We merge the CMS reviews with the default ones so the scroll never breaks!
+                    workingSet = [...cmsReviews, ...defaultReviews];
                 }
             } catch (err) {
                 console.log("Decap CMS reviews not generated yet. Running default fallback data.");
@@ -692,30 +659,6 @@
             }, 400);
         }
 
-        // Booking Modal logic
-        const bookingModal = document.getElementById('booking-modal');
-        
-        function openBookingModal() {
-            bookingModal.classList.remove('hidden');
-            setTimeout(() => bookingModal.classList.add('active'), 10);
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeBookingModal() {
-            bookingModal.classList.remove('active');
-            setTimeout(() => {
-                bookingModal.classList.add('hidden');
-                document.body.style.overflow = '';
-            }, 400);
-        }
-
-        function submitBooking(e) {
-            e.preventDefault();
-            const calendarLink = "https://calendar.google.com/";
-            window.open(calendarLink, '_blank');
-            closeBookingModal();
-        }
-
         // Review Modal Netlify Asynchronous Post Wrapper
         const reviewModal = document.getElementById('review-modal');
         const reviewForm = document.getElementById('review-form');
@@ -771,7 +714,6 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 if (lightbox.classList.contains('active')) closeLightbox();
-                if (bookingModal.classList.contains('active')) closeBookingModal();
                 if (reviewModal.classList.contains('active')) closeReviewModal();
             }
         });
