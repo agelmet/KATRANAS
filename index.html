@@ -43,7 +43,7 @@
                         'glow-red': '0 0 40px -5px rgba(214, 30, 26, 0.6)',
                     },
                     animation: {
-                        'marquee': 'marquee 150s linear infinite', /* Slower marquee for many reviews */
+                        'marquee': 'marquee 150s linear infinite',
                         'float': 'float 6s ease-in-out infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
@@ -95,11 +95,11 @@
         .marquee-container { display: flex; width: fit-content; }
         .marquee-container:hover { animation-play-state: paused; }
 
-        #lightbox, #booking-modal, #review-modal {
+        #lightbox, #booking-modal {
             opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
             backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
         }
-        #lightbox.active, #booking-modal.active, #review-modal.active { opacity: 1; pointer-events: auto; }
+        #lightbox.active, #booking-modal.active { opacity: 1; pointer-events: auto; }
         #lightbox img { transform: scale(0.95); transition: transform 0.4s ease; }
         #lightbox.active img { transform: scale(1); }
         
@@ -414,7 +414,9 @@
             <span class="text-med-red font-bold tracking-widest text-sm uppercase no-accents">ΕΜΠΕΙΡΙΕΣ ΑΣΘΕΝΩΝ</span>
             <h2 class="text-4xl font-serif text-med-black mt-4 mb-4">Πάνω από 100 Άριστες Αξιολογήσεις</h2>
             <p class="text-med-charcoal mb-8">Η εμπιστοσύνη σας είναι η μεγαλύτερη απόδειξη της ιατρικής μας προσέγγισης.</p>
-            <button onclick="openReviewModal()" class="px-6 py-2 bg-med-black text-white rounded-full font-bold hover:bg-med-teal transition-colors shadow-md">Αξιολογήστε μας</button>
+            <a href="https://www.google.com/search?client=safari&hs=Fw0p&sa=X&sca_esv=780a66cf752212b8&rls=en&biw=1728&bih=994&sxsrf=ANbL-n6JcdwTkENvzeFo-94GPoVzOcm_gw:1780565215391&q=Κατράνας+Σωτήριος+Καρδιολόγος+Reviews&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2NrUwMrMwNLSwMDM3tbA0MrM02sDI-IrR4dyscxvPt5xvPLfm3F4gq0nh3OLznedbzq0DCu08tx8kAFLReG4LiHtu9_mec5vBwkGpZZmp5cWLWCk2AgCbC5HUoAAAAA&rldimm=3582681188675892692&tbm=lcl&hl=en-GR&ved=2ahUKEwiXtqapou2UAxXkQvEDHZ_VNzQQ9fQKegQISRAI#lkt=LocalPoiReviews" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-med-black text-white rounded-full font-bold inline-block hover:bg-med-teal transition-colors shadow-md">
+                Αξιολογήστε μας
+            </a>
         </div>
 
         <div class="w-full overflow-hidden relative pb-10">
@@ -424,7 +426,6 @@
             <div class="marquee-container animate-marquee hover:[animation-play-state:paused]">
                 <div class="flex space-x-6 px-3" id="reviews-track">
                     <script>
-                        // Πλήρης λίστα με ΟΛΕΣ τις αξιολογήσεις που ζητήσατε
                         const reviews = [
                             { score: "10.0", name: "Ευτυχία", count: "5 αξιολογήσεις", date: "16 Μαΐου 2026", text: "Εξαιρετικός γιατρός, πολύ ευγενικός και επεξηγηματικός. Μου ενέπνευσε εμπιστοσύνη από την πρώτη στιγμή και αφιέρωσε χρόνο να ακούσει προσεκτικά το ιστορικό μου και να απαντήσει στις απορίες μου. Πολύ θετική εμπειρία συνολικά." },
                             { score: "10.0", name: "Αγγελική", count: "1 αξιολόγηση", date: "01 Μαΐου 2026", text: "Καταπληκτικός γιατρός, κατανόησε το ζήτημα και έδωσε πρακτικές συμβουλές." },
@@ -545,7 +546,6 @@
                             { score: "9.4", name: "ΣΟΦΙΑ", count: "3 αξιολογήσεις", date: "16 Σεπτεμβρίου 2020", text: "Αξιόλογος Γιατρός, τον συνιστώ ανεπιφύλακτα." }
                         ];
 
-                        // Duplicate array to ensure smooth infinite marquee
                         const displayReviews = [...reviews, ...reviews];
 
                         displayReviews.forEach(r => {
@@ -691,40 +691,6 @@
         </div>
     </div>
 
-    <!-- Review Modal (Admin Approval system frontend) -->
-    <div id="review-modal" class="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center hidden">
-        <div class="bg-white rounded-3xl p-8 max-w-lg w-full mx-4 shadow-2xl relative">
-            <button onclick="closeReviewModal()" class="absolute top-4 right-4 text-med-charcoal hover:text-med-red transition-colors">
-                <i data-lucide="x" class="w-8 h-8"></i>
-            </button>
-            <h3 class="text-2xl font-serif text-med-black mb-2">Η Αξιολόγησή σας</h3>
-            <p class="text-sm text-med-charcoal/70 mb-6 border-b pb-4">Μοιραστείτε την εμπειρία σας μαζί μας.</p>
-            
-            <form id="review-form" onsubmit="submitReview(event)">
-                <div class="mb-4">
-                    <label class="block text-sm font-bold text-med-charcoal mb-2" for="rev-name">Ονοματεπώνυμο *</label>
-                    <input type="text" id="rev-name" required class="w-full border border-med-gray rounded-xl p-3 text-med-charcoal focus:outline-none focus:border-med-teal">
-                </div>
-                
-                <div class="mb-6">
-                    <label class="block text-sm font-bold text-med-charcoal mb-2" for="rev-text">Σχόλιο *</label>
-                    <textarea id="rev-text" required rows="4" class="w-full border border-med-gray rounded-xl p-3 text-med-charcoal focus:outline-none focus:border-med-teal"></textarea>
-                </div>
-
-                <button type="submit" class="w-full bg-med-black text-white font-bold py-4 rounded-xl hover:bg-med-teal transition-colors">
-                    Υποβολή Αξιολόγησης
-                </button>
-            </form>
-            
-            <div id="review-success" class="hidden text-center py-6">
-                <i data-lucide="check-circle-2" class="w-16 h-16 text-green-500 mx-auto mb-4"></i>
-                <h4 class="text-xl font-bold text-med-black mb-2">Σας ευχαριστούμε!</h4>
-                <p class="text-med-charcoal/80">Η κριτική σας υποβλήθηκε επιτυχώς και βρίσκεται σε κατάσταση αναμονής. Θα εμφανιστεί στην ιστοσελίδα μας μετά τον έλεγχο και την έγκριση του ιατρού.</p>
-                <button onclick="closeReviewModal()" class="mt-6 text-med-teal font-bold hover:underline">Κλείσιμο</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Lightbox for Images -->
     <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center cursor-zoom-out hidden" onclick="closeLightbox()">
         <button class="absolute top-6 right-6 text-white hover:text-med-red transition-colors">
@@ -824,44 +790,14 @@
 
         function submitBooking(e) {
             e.preventDefault();
-            // Redirect directly to the requested Google Calendar Link
             window.open('https://calendar.app.google/AVxidqQcqKRcsCQy9', '_blank');
             closeBookingModal();
-        }
-
-        // 7. Review Modal logic
-        const reviewModal = document.getElementById('review-modal');
-        const reviewForm = document.getElementById('review-form');
-        const reviewSuccess = document.getElementById('review-success');
-
-        function openReviewModal() {
-            reviewForm.style.display = 'block';
-            reviewSuccess.classList.add('hidden');
-            reviewForm.reset();
-            reviewModal.classList.remove('hidden');
-            setTimeout(() => reviewModal.classList.add('active'), 10);
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeReviewModal() {
-            reviewModal.classList.remove('active');
-            setTimeout(() => {
-                reviewModal.classList.add('hidden');
-                document.body.style.overflow = '';
-            }, 400);
-        }
-
-        function submitReview(e) {
-            e.preventDefault();
-            reviewForm.style.display = 'none';
-            reviewSuccess.classList.remove('hidden');
         }
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 if (lightbox.classList.contains('active')) closeLightbox();
                 if (bookingModal.classList.contains('active')) closeBookingModal();
-                if (reviewModal.classList.contains('active')) closeReviewModal();
             }
         });
     </script>
