@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="el" class="scroll-smooth"><head>
+<!DOCTYPE html>
+<html lang="el" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -14,7 +16,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
@@ -42,7 +43,7 @@
                         'glow-red': '0 0 40px -5px rgba(214, 30, 26, 0.6)',
                     },
                     animation: {
-                        'marquee': 'marquee 60s linear infinite',
+                        'marquee': 'marquee 150s linear infinite', /* Slower marquee for many reviews */
                         'float': 'float 6s ease-in-out infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
@@ -94,11 +95,11 @@
         .marquee-container { display: flex; width: fit-content; }
         .marquee-container:hover { animation-play-state: paused; }
 
-        #lightbox, #review-modal {
+        #lightbox, #booking-modal, #review-modal {
             opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
             backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
         }
-        #lightbox.active, #review-modal.active { opacity: 1; pointer-events: auto; }
+        #lightbox.active, #booking-modal.active, #review-modal.active { opacity: 1; pointer-events: auto; }
         #lightbox img { transform: scale(0.95); transition: transform 0.4s ease; }
         #lightbox.active img { transform: scale(1); }
         
@@ -109,8 +110,11 @@
         }
     </style>
 
-    <script src="https://unpkg.com/lucide@latest"></script></head><body class="bg-med-light text-med-charcoal font-sans antialiased overflow-x-hidden selection:bg-med-red selection:text-white">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-med-light text-med-charcoal font-sans antialiased overflow-x-hidden selection:bg-med-red selection:text-white">
 
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="glass-panel rounded-2xl flex justify-between items-center px-6 py-3 shadow-glass">
@@ -124,7 +128,7 @@
                     <a href="#precision" class="text-sm font-semibold text-med-black hover:text-med-red transition-colors">ΙΑΤΡΙΚΗ ΑΚΡΙΒΕΙΑΣ</a>
                     <a href="#space" class="text-sm font-semibold text-med-black hover:text-med-red transition-colors">ΙΑΤΡΕΙΟ</a>
                     <a href="#reviews" class="text-sm font-semibold text-med-black hover:text-med-red transition-colors">ΑΞΙΟΛΟΓΗΣΕΙΣ</a>
-                    <a href="#contact" class="px-7 py-3 bg-med-red text-white rounded-full text-sm font-bold hover:bg-med-black hover:shadow-lg transition-all transform hover:-translate-y-0.5 shadow-glow-red">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ</a>
+                    <button onclick="openBookingModal()" class="px-7 py-3 bg-med-red text-white rounded-full text-sm font-bold hover:bg-med-black hover:shadow-lg transition-all transform hover:-translate-y-0.5 shadow-glow-red">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ</button>
                 </div>
 
                 <button class="lg:hidden text-med-black focus:outline-none" id="mobile-menu-btn">
@@ -139,10 +143,11 @@
             <a href="#precision" class="text-lg font-bold text-med-black mobile-link">ΙΑΤΡΙΚΗ ΑΚΡΙΒΕΙΑΣ</a>
             <a href="#space" class="text-lg font-bold text-med-black mobile-link">ΙΑΤΡΕΙΟ</a>
             <a href="#reviews" class="text-lg font-bold text-med-black mobile-link">ΑΞΙΟΛΟΓΗΣΕΙΣ</a>
-            <a href="#contact" onclick="document.getElementById('mobile-menu').classList.add('hidden');" class="px-8 py-3 bg-med-red text-white rounded-full text-lg font-bold shadow-glow-red">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ</a>
+            <button onclick="openBookingModal(); document.getElementById('mobile-menu').classList.add('hidden');" class="px-8 py-3 bg-med-red text-white rounded-full text-lg font-bold shadow-glow-red">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ</button>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden bg-med-black text-center">
         <div class="absolute inset-0 z-0">
             <img src="https://raw.githubusercontent.com/agelmet/KATRANAS/refs/heads/main/unnamed-12.jpg" alt="Background" class="w-full h-full object-cover object-center">
@@ -166,10 +171,10 @@
                     Διδάκτωρ Καρδιολογίας Α.Π.Θ.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-                    <a href="#contact" class="w-full sm:w-auto px-10 py-4 bg-med-red text-white rounded-full font-bold hover:bg-white hover:text-med-red transition-colors shadow-glow-red flex items-center justify-center gap-2 group">
+                    <button onclick="openBookingModal()" class="w-full sm:w-auto px-10 py-4 bg-med-red text-white rounded-full font-bold hover:bg-white hover:text-med-red transition-colors shadow-glow-red flex items-center justify-center gap-2 group">
                         ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ
                         <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                    </a>
+                    </button>
                     <a href="#about" class="w-full sm:w-auto px-10 py-4 bg-transparent border-2 border-white/60 text-white rounded-full font-bold hover:border-white hover:bg-white/20 transition-all backdrop-blur-md flex items-center justify-center shadow-lg">
                         ΓΝΩΡΙΣΤΕ ΜΑΣ
                     </a>
@@ -180,6 +185,7 @@
         <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-med-light to-transparent z-20"></div>
     </section>
 
+    <!-- About Section -->
     <section id="about" class="py-24 px-6 bg-med-light relative overflow-hidden">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center">
             
@@ -221,6 +227,7 @@
         </div>
     </section>
 
+    <!-- Services Section -->
     <section id="services" class="py-24 px-6 bg-white relative">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-20 reveal">
@@ -231,6 +238,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
+                <!-- Service 1 -->
                 <div class="service-card bg-med-light p-10 rounded-[2rem] group relative overflow-hidden reveal shadow-soft border border-med-gray/50" style="--tw-shadow-glow: 0 0 40px -10px rgba(44, 167, 164, 0.25);">
                     <div class="absolute -right-20 -top-20 w-64 h-64 bg-med-teal/15 rounded-full blur-[60px] group-hover:bg-med-teal/25 transition-colors duration-700"></div>
                     <div class="relative z-10 flex flex-col h-full">
@@ -250,6 +258,7 @@
                     </div>
                 </div>
 
+                <!-- Service 2 -->
                 <div class="service-card bg-med-light p-10 rounded-[2rem] group relative overflow-hidden reveal reveal-delay-1 shadow-soft border border-med-gray/50" style="--tw-shadow-glow: 0 0 40px -10px rgba(214, 30, 26, 0.25);">
                     <div class="absolute -right-20 -top-20 w-64 h-64 bg-med-red/10 rounded-full blur-[60px] group-hover:bg-med-red/20 transition-colors duration-700"></div>
                     <div class="relative z-10 flex flex-col h-full">
@@ -271,6 +280,7 @@
                     </div>
                 </div>
 
+                <!-- Service 3 -->
                 <div class="service-card bg-med-light p-10 rounded-[2rem] group relative overflow-hidden reveal shadow-soft border border-med-gray/50" style="--tw-shadow-glow: 0 0 40px -10px rgba(44, 167, 164, 0.25);">
                     <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-med-teal/15 rounded-full blur-[60px] group-hover:bg-med-teal/25 transition-colors duration-700"></div>
                     <div class="relative z-10 flex flex-col h-full">
@@ -289,6 +299,7 @@
                     </div>
                 </div>
 
+                <!-- Service 4 -->
                 <div class="service-card bg-med-light p-10 rounded-[2rem] group relative overflow-hidden reveal reveal-delay-1 shadow-soft border border-med-gray/50" style="--tw-shadow-glow: 0 0 40px -10px rgba(26, 43, 76, 0.2);">
                     <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-med-black/10 rounded-full blur-[60px] group-hover:bg-med-black/15 transition-colors duration-700"></div>
                     <div class="relative z-10 flex flex-col h-full">
@@ -310,6 +321,7 @@
         </div>
     </section>
 
+    <!-- Precision Medicine Section -->
     <section id="precision" class="py-24 px-6 bg-med-black text-white relative overflow-hidden">
         <div class="absolute inset-0 z-0 opacity-20">
             <div class="absolute top-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-med-teal blur-[120px]"></div>
@@ -322,26 +334,38 @@
                 <h2 class="text-4xl md:text-5xl font-serif text-white mt-4 border-b-2 border-med-red inline-block pb-2">Η Καρδιολογία της Ακριβείας</h2>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="glass-panel-dark p-10 rounded-3xl group reveal border border-white/20 hover:border-med-teal transition-colors">
-                    <i data-lucide="dna" class="w-14 h-14 text-med-teal mb-6"></i>
-                    <h4 class="text-2xl font-bold text-white mb-6">Εξειδίκευση στις Μυοκαρδιοπάθειες</h4>
-                    <p class="text-white/80 text-base leading-relaxed">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Box 1 -->
+                <div class="glass-panel-dark p-8 rounded-3xl group reveal border border-white/20 hover:border-med-teal transition-colors">
+                    <i data-lucide="dna" class="w-12 h-12 text-med-teal mb-6"></i>
+                    <h4 class="text-xl font-bold text-white mb-4">Εξειδίκευση στις Μυοκαρδιοπάθειες</h4>
+                    <p class="text-white/80 text-sm leading-relaxed">
                         Σύνθετες παθήσεις του μυοκαρδίου απαιτούν λεπτή και εξειδικευμένη ματιά. Η εμπειρία από το Saint Bartholomew's Hospital και το Royal Brompton Hospital του Λονδίνου, καθώς και από το Τμήμα Μυοκαρδιοπαθειών της A’ Καρδιολογικής Κλινικής του Π.Γ.Ν.Θ. ΑΧΕΠΑ μεταφέρεται απευθείας στους ασθενείς μας.
                     </p>
                 </div>
 
-                <div class="glass-panel-dark p-10 rounded-3xl group reveal reveal-delay-1 border border-white/20 hover:border-med-red transition-colors">
-                    <i data-lucide="network" class="w-14 h-14 text-med-red mb-6"></i>
-                    <h4 class="text-2xl font-bold text-white mb-6">Εξειδίκευση στις Μυοκαρδιοπάθειες ασθενών με Νευρομυϊκά Νοσήματα</h4>
-                    <p class="text-white/80 text-base leading-relaxed">
-                        Η διαχείριση μιας σύνθετης ή σπάνιας πάθησης δεν είναι απλή υπόθεση. Απαιτείται κλινική γνώση, στοχευμένη προσέγγιση και προσωποποιημένη φροντίδα. Η εμπειρία από το Neuromuscular Complex Care Centre του National Hospital for Neurology and Neurosurgery του Λονδίνου, καθώς και από τη Μονάδα Νευρομυϊκών Παθήσεων του Π.Γ.Ν.Θ. ΑΧΕΠΑ υπό την MDA Hellas (Muscular Dystrophy Association) μεταφέρεται απευθείας στους ασθενείς.
+                <!-- Box 2 -->
+                <div class="glass-panel-dark p-8 rounded-3xl group reveal reveal-delay-1 mt-0 md:mt-8 border border-white/20 hover:border-med-red transition-colors">
+                    <i data-lucide="network" class="w-12 h-12 text-med-red mb-6"></i>
+                    <h4 class="text-xl font-bold text-white mb-4">Εξειδίκευση στις Μυοκαρδιοπάθειες ασθενών με Νευρομυϊκά Νοσήματα</h4>
+                    <p class="text-white/80 text-sm leading-relaxed">
+                        Η διαχείριση μιας σύνθετης ή σπάνιας πάθησης δεν είναι απλή υπόθεση. Απαιτείται κλινική γνώση, στοχευμένη προσέγγιση και προσωποποιημένη φροντίδα. Η εμπειρία από το Neuromuscular Complex Care Centre του National Hospital for Neurology and Neurosurgery του Λονδίνου, καθώς και από τη Μονάδα Νευρομυϊκών Παθήσεων του Π.Γ.Ν.Θ. ΑΧΕΠΑ υπό την MDA Hellas μεταφέρεται απευθείας στους ασθενείς.
+                    </p>
+                </div>
+
+                <!-- Box 3 -->
+                <div class="glass-panel-dark p-8 rounded-3xl group reveal reveal-delay-2 border border-white/20 hover:border-white transition-colors">
+                    <i data-lucide="book-open-check" class="w-12 h-12 text-white mb-6"></i>
+                    <h4 class="text-xl font-bold text-white mb-4">Η "Μετάφραση" της Γνώσης σε Φροντίδα</h4>
+                    <p class="text-white/80 text-sm leading-relaxed">
+                        Η ακαδημαϊκή έρευνα (PhD, ΑΧΕΠΑ, GR-iCardiacNet) αποκτά αξία όταν μεταφράζεται σε ασφάλεια για εσάς. Ο ασθενής γνωρίζει ακριβώς <em>γιατί</em> λαμβάνει την εκάστοτε θεραπεία.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Space / Clinic Section -->
     <section id="space" class="py-24 px-6 bg-med-light">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -384,6 +408,7 @@
         </div>
     </section>
 
+    <!-- Independent Reviews Section -->
     <section id="reviews" class="py-24 bg-white overflow-hidden border-t border-med-gray/50">
         <div class="max-w-7xl mx-auto px-6 mb-12 text-center reveal">
             <span class="text-med-red font-bold tracking-widest text-sm uppercase no-accents">ΕΜΠΕΙΡΙΕΣ ΑΣΘΕΝΩΝ</span>
@@ -393,21 +418,170 @@
         </div>
 
         <div class="w-full overflow-hidden relative pb-10">
-            <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
-            <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+            <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none"></div>
             
-            <div class="marquee-container animate-marquee">
-                <div class="flex space-x-6 px-3" id="reviews-container"></div>
+            <div class="marquee-container animate-marquee hover:[animation-play-state:paused]">
+                <div class="flex space-x-6 px-3" id="reviews-track">
+                    <script>
+                        // Πλήρης λίστα με ΟΛΕΣ τις αξιολογήσεις που ζητήσατε
+                        const reviews = [
+                            { score: "10.0", name: "Ευτυχία", count: "5 αξιολογήσεις", date: "16 Μαΐου 2026", text: "Εξαιρετικός γιατρός, πολύ ευγενικός και επεξηγηματικός. Μου ενέπνευσε εμπιστοσύνη από την πρώτη στιγμή και αφιέρωσε χρόνο να ακούσει προσεκτικά το ιστορικό μου και να απαντήσει στις απορίες μου. Πολύ θετική εμπειρία συνολικά." },
+                            { score: "10.0", name: "Αγγελική", count: "1 αξιολόγηση", date: "01 Μαΐου 2026", text: "Καταπληκτικός γιατρός, κατανόησε το ζήτημα και έδωσε πρακτικές συμβουλές." },
+                            { score: "10.0", name: "Ευγενια", count: "2 αξιολογήσεις", date: "23 Απριλίου 2026", text: "Ήταν το πρώτο ραντεβού με τον γιατρό και έμεινα πολύ ευχαριστημένη! Πολύ ευγενικός άνθρωπος και κατατοπιστικός." },
+                            { score: "10.0", name: "Νεκταρια", count: "2 αξιολογήσεις", date: "21 Απριλίου 2026", text: "Εξαιρετικός καρδιολόγος! Πολύ προσεκτικός και αναλυτικός. Είμαι πολύ ικανοποιημένη!" },
+                            { score: "10.0", name: "Σάββας", count: "2 αξιολογήσεις", date: "04 Απριλίου 2026", text: "Πολύ θετική εμπειρία. Επεξηγηματικός και καθησυχαστικός γιατρός που εμπνέει εμπιστοσύνη. Προσιτός, ευγενέστατος και φιλικός, με άμεση ανταπόκριση και μετά το ραντεβού." },
+                            { score: "10.0", name: "ΜΑΡΙΑ", count: "1 αξιολόγηση", date: "31 Μαρτίου 2026", text: "Φιλικός και εξυπηρετικός. Είχε την κατάρτιση ακριβώς πάνω στο θέμα μου." },
+                            { score: "10.0", name: "Αναστασία", count: "2 αξιολογήσεις", date: "13 Φεβρουαρίου 2026", text: "Πήγα για δεύτερη φορά στον συγκεκριμένο καρδιολόγο και παραμένω πολύ ικανοποιημένη. Εκτός από τις γνώσεις του, ξεχώρισε για την ανθρωπιά και την κατανόησή του, αφιέρωσε χρόνο να μου εξηγήσει τα πάντα και με έκανε να νιώσω άνετα και ασφαλής. Τον προτείνω σίγουρα." },
+                            { score: "10.0", name: "ΑΘΑΝΑΣΙΑ", count: "3 αξιολογήσεις", date: "05 Φεβρουαρίου 2026", text: "ΕΞΑΙΡΕΤΙΚΟΣ. Αφιερώνει χρόνο, δεν βιάζεται να 'ξεπετάξει' τον ασθενή, δεν σε απελπίζει. Σου δίνει λύσεις και σου αναπτερώνει το ηθικό, πράγμα - κατά την γνώμη μου - πολύ σοβαρό. Προσιτός και ευγενικός άνθρωπος." },
+                            { score: "10.0", name: "Δέσποινα", count: "1 αξιολόγηση", date: "03 Φεβρουαρίου 2026", text: "Πολύ ευγενικός και αναλυτικος." },
+                            { score: "10.0", name: "Δημητρης", count: "1 αξιολόγηση", date: "21 Ιανουαρίου 2026", text: "Πολύ καλός, ευγενέστατος και ασχολήθηκε πολυ" },
+                            { score: "10.0", name: "ΜΑΡΙΑ", count: "1 αξιολόγηση", date: "20 Ιανουαρίου 2026", text: "Σωστός επαγγελματίας, συνεπής και κατατοπιστικός. Πολύ καλή εμπειρία συνολικά." },
+                            { score: "10.0", name: "ΣΩΚΡΑΤΗΣ", count: "6 αξιολογήσεις", date: "18 Δεκεμβρίου 2025", text: "Διερεύνησε σε βάθος την περίπτωση μου και μου ενέπνευσε εμπιστοσύνη. Ευγενικός άνθρωπος και εξαιρετικός επιστήμων." },
+                            { score: "10.0", name: "Θεόδωρος", count: "1 αξιολόγηση", date: "26 Νοεμβρίου 2025", text: "Ok όλα καλα,,........... ............... ... ......" },
+                            { score: "9.8", name: "Ιωάννης", count: "2 αξιολογήσεις", date: "14 Οκτωβρίου 2025", text: "Καλός καλος εξωτερικός αμέσως με εξέτασε και ασχολήθηκε foul του foul" },
+                            { score: "10.0", name: "Κρόντσος", count: "3 αξιολογήσεις", date: "12 Οκτωβρίου 2025", text: "Προσιτός, κατανοητός και άρτια καταρτισμένος ο γιατρός." },
+                            { score: "10.0", name: "Katsipis", count: "5 αξιολογήσεις", date: "10 Οκτωβρίου 2025", text: "Ο γιατρός με εξέτασε αναλυτικά και έδειξε προσωπικό ενδιαφέρον. Τον συστήνω." },
+                            { score: "10.0", name: "Eleni", count: "1 αξιολόγηση", date: "07 Οκτωβρίου 2025", text: "Έμπειρος και πολύ καλός γιατρός . Άριστος επιστήμονας με ανθρωπιά και φιλική προσέγγιση στους ασθενείς του!! Θα τον συνιστούσα ανεπιφύλακτα!" },
+                            { score: "9.8", name: "ΑΛΚΗΣ", count: "18 αξιολογήσεις", date: "20 Σεπτεμβρίου 2025", text: "Ασχοληθηκε σε βαθος με την εξεταση, εμπειρος, συνεπεια στο ραντεβου." },
+                            { score: "9.8", name: "ΜΑΡΙΟΣ ΚΩΝΣΤΑΝΤΙΝΟΣ", count: "1 αξιολόγηση", date: "15 Σεπτεμβρίου 2025", text: "Εξαιρετικός γιατρός και άνθρωπος! Επισκεφθήκαμε τον κύριο Κατράνα με τον γιο μου για προληπτικό έλεγχο. Ήταν πολύ προσεκτικός, ευγενικός και απίστευτα επικοινωνιακός με το παιδί. Άψογος επαγγελματίας. Τον συνιστούμε ανεπιφύλακτα!" },
+                            { score: "10.0", name: "ΕΥΑΓΓΕΛΟΣ", count: "6 αξιολογήσεις", date: "29 Αυγούστου 2025", text: "Αξιόλογος γιατρός και με καλή διάθεση και επικοινωνία." },
+                            { score: "10.0", name: "ΣΤΥΛΙΑΝΗ", count: "1 αξιολόγηση", date: "20 Αυγούστου 2025", text: "Καταρτισμένος επιστήμονας και πολύ ανθρώπινος στην προσέγγισή του." },
+                            { score: "10.0", name: "Dimitrios", count: "4 αξιολογήσεις", date: "16 Ιουλίου 2025", text: "Πολύ καλός γιατρός και σύγχρονο ιατρείο!" },
+                            { score: "10.0", name: "ANNA", count: "3 αξιολογήσεις", date: "15 Ιουλίου 2025", text: "Ο γιατρός ήταν πάρα πολύ εξυπηρετικός. Συνεπέστατος και ευγενικός. Σε κάνει να νιώθεις ανεση και ασφάλεια από την πρώτη στιγμή. Εξέτασε σε βάθος το πρόβλημα μου!" },
+                            { score: "10.0", name: "Μαρίνα", count: "4 αξιολογήσεις", date: "28 Ιουνίου 2025", text: "Πάρα πολύ αξιόλογος γιατρός! Πήρε αναλυτικά το ιστορικό και ενδιαφέρθηκε για την περίπτωσή μου (εγκυμοσύνη) . Επεξηγηματικός σε όλα! Θα τον ξαναπροτιμήσουμε." },
+                            { score: "10.0", name: "Χαρά", count: "1 αξιολόγηση", date: "06 Ιανουαρίου 2024", text: "Είναι η δεύτερη φορά που επισκέφτηκα τον συγκεκριμένο γιατρό και είμαι απόλυτα ικανοποιημένη." },
+                            { score: "10.0", name: "ΑΓΑΠΗ", count: "1 αξιολόγηση", date: "28 Δεκεμβρίου 2023", text: "καλή εξυπηρέτηση, εμπνέει εμπιστοσύνη!" },
+                            { score: "10.0", name: "ΕΥΑΓΓΕΛΙΑ", count: "1 αξιολόγηση", date: "09 Δεκεμβρίου 2023", text: "Εξαιρετικός γιατρός .πήρε πλήρες ιστορικό ασχολήθηκε αναλυτικά και πραγματοποίησε όλες τις απαραίτητες εξετάσεις . Εμπνέει εμπιστοσύνη και ανθρωπια" },
+                            { score: "9.6", name: "ΓΕΩΡΓΙΟΣ", count: "1 αξιολόγηση", date: "29 Νοεμβρίου 2023", text: "Έμεινα πολύ ευχαριστημένος από την εξέταση του Ιατρού, πήρε πλήρη ιστορικό μου , διενήργησε σχολαστικη εξέταση και το ραντεβού μας πραγματοποιήθηκε στην ώρα του." },
+                            { score: "10.0", name: "Βασίλης", count: "1 αξιολόγηση", date: "27 Νοεμβρίου 2023", text: "Ευγενικός, συνεπης και καταρτισμενος γιατρός." },
+                            { score: "10.0", name: "ΕΥΑΓΓΕΛΟΣ", count: "1 αξιολόγηση", date: "23 Νοεμβρίου 2023", text: "Σοβαρός, πλήρως καταρτισμένος και επεξηγηματικός." },
+                            { score: "10.0", name: "Αικατερινη", count: "1 αξιολόγηση", date: "16 Νοεμβρίου 2023", text: "Άψογος επαγγελματίας , πολύ συνεργάσιμος .θα τον συστήσω ανεπιφύλακτα" },
+                            { score: "8.8", name: "Δέσποινα", count: "1 αξιολόγηση", date: "09 Νοεμβρίου 2023", text: "Ο ιατρός είναι άριστος πολύ ευγενικός και εξυπηρετικός." },
+                            { score: "10.0", name: "Αικατερίνη", count: "1 αξιολόγηση", date: "24 Οκτωβρίου 2023", text: "Ανθρωπινος και ιδιαιτερα ευγενης και ευχαριστος, αρτια καταρτισμενος και προσεκτικοςσε καθε λεπτομερεια" },
+                            { score: "10.0", name: "Kyriakos", count: "1 αξιολόγηση", date: "10 Οκτωβρίου 2023", text: "Πολυ καλος. Ευγενης ,μετρημενος." },
+                            { score: "10.0", name: "ΔΗΜΗΤΡΑ", count: "3 αξιολογήσεις", date: "04 Οκτωβρίου 2023", text: "Αρχικά ο χώρος είναι πολύ λειτουργικός, πεντακάθαρος και καλαίσθητος. Μόλις μπεις στο χώρο αναμονής αισθάνεσαι άνετα,σαν άνθρωπος.Συνεπεια στην ώρα του ραντεβού.Πληρωσα ακριβώς ότι είδα όταν έκλεισα το ραντεβού.Ο γιατρός απόλυτα επεξηγηματικός ελάχιστες ερωτήσεις χρειάστηκε να κάνω.Ρωτησε και σημείωσε αναλυτικά όλο το ιστορικό μου.Καμια βιασύνη.Με ρώτησε αν έχω κάποια περαιτέρω απορία.Η εξέταση άνετη χωρίς άγχος και βιασύνη.Εδωσε οδηγίες μετά την εξέταση για όλα.Απαντησε στις ερωτήσεις μου.Γενικα μια άριστη εμπειρία σαν πρώτο ραντεβού σίγουρα θα συνεχίσω με τον ίδιο γιατρό." },
+                            { score: "10.0", name: "Θωμάς", count: "2 αξιολογήσεις", date: "22 Σεπτεμβρίου 2023", text: "Άριστος επαγγελματίας με Συνέπεια." },
+                            { score: "10.0", name: "ΧΡΥΣΟΥΛΑ", count: "1 αξιολόγηση", date: "20 Σεπτεμβρίου 2023", text: "Ευχαριστούμε ήταν όλα εντάξει, ενημέρωση χωρίς καθυστέρηση και με απόλυτη αμεσότητα" },
+                            { score: "9.8", name: "Αφροδίτη", count: "1 αξιολόγηση", date: "12 Σεπτεμβρίου 2023", text: "Ευγενέστατος γιατρός! Μείναμε πολύ ευχαριστημένοι και θα τον πρότεινα ανεπιφύλακτα!" },
+                            { score: "10.0", name: "Κωνσταντίνος", count: "3 αξιολογήσεις", date: "27 Μαΐου 2023", text: "Ασχολείται εις βάθος με την περίπτωση και φαίνεται η εμπειρία του." },
+                            { score: "10.0", name: "Ανδρεας", count: "5 αξιολογήσεις", date: "25 Μαΐου 2023", text: "Εξαιρετικος ιατρος με αριστη επιστημονικη καταρτιση, φιλικος και ανθρωπινος. Ευχαριστω γιατρε!" },
+                            { score: "10.0", name: "Αλεξανδρα", count: "3 αξιολογήσεις", date: "15 Μαΐου 2023", text: "Έλαβε το πλήρες ιστορικό και εξήγησε κάθε απορία μου. Με έκανε να νιώσω άνετα. Συνεπής στο ραντεβού." },
+                            { score: "10.0", name: "ΜΑΡΙΑ", count: "2 αξιολογήσεις", date: "12 Μαΐου 2023", text: "Πρώτη φορά επίσκεψη στο ιατρείο Εξαιρετικός γιατρός καταρτισμένος, ευγενικός μου έδωσε σαφής οδηγίες ήταν αρκετά συζητήσιμος και καθησυχαστικός." },
+                            { score: "9.2", name: "ΑΓΓΕΛΙΚΗ", count: "2 αξιολογήσεις", date: "10 Μαΐου 2023", text: "Πολύ καλός γιατρός. Εξηγεί το πρόβλημα, ασχολείται με τον ασθενή και γενικά εμπνέει εμπιστοσύνη." },
+                            { score: "10.0", name: "ANESTIS", count: "6 αξιολογήσεις", date: "04 Μαΐου 2023", text: "Δύο λέξεις. Εξαιρετικός γιατρός." },
+                            { score: "10.0", name: "ΑΝΤΩΝΙΑ", count: "1 αξιολόγηση", date: "26 Απριλίου 2023", text: "Ο γιατρός έχει εμπειρία, έδωσε έμφαση στο πρόβλημα μου με άμεση λύση . τον συστήνω ανεπιφύλακτα" },
+                            { score: "9.8", name: "Ιωάννης", count: "1 αξιολόγηση", date: "25 Απριλίου 2023", text: "Εξαιρετικός επιστήμονας και άνθρωπος, πολύ εξυπηρετικός και διεξοδικός στην δουλειά του." },
+                            { score: "10.0", name: "Genc", count: "1 αξιολόγηση", date: "05 Απριλίου 2023", text: "It was a very good experience. The doctor’s work was great." },
+                            { score: "10.0", name: "ΜΙΧΑΉΛ", count: "8 αξιολογήσεις", date: "25 Μαρτίου 2023", text: "Το ραντεβού ήταν για τον πατέρα μου.Ο γιατρός εξαιρετικός!Ασχολήθηκε διεξοδικά με την περίπτωσή του και μας εξήγησε αναλυτικά τί πρέπει να κάνουμε στην περίπτωσή του!" },
+                            { score: "10.0", name: "ΣΤΥΛΙΑΝΟΣ", count: "3 αξιολογήσεις", date: "10 Μαρτίου 2023", text: "άριστος σε όλα του. δεν έχω καμία παρατήρηση." },
+                            { score: "10.0", name: "Stavros", count: "1 αξιολόγηση", date: "04 Μαρτίου 2023", text: "Όλα εξαιρετικά και στη ώρα τους" },
+                            { score: "8.8", name: "Ερατω", count: "3 αξιολογήσεις", date: "22 Φεβρουαρίου 2023", text: "Συνεπης, καταρτισμενος και επεξηγηματικος" },
+                            { score: "10.0", name: "Φροσω", count: "1 αξιολόγηση", date: "10 Φεβρουαρίου 2023", text: "Εξαιρετικός, ανθρώπινος, καταρτισμένος. Σου αφιερώνει χρόνο να σε ακουσει, σου εξηγεί, σε καθησυχαζει." },
+                            { score: "10.0", name: "Λαμπριάνα", count: "6 αξιολογήσεις", date: "05 Φεβρουαρίου 2023", text: "Διερεύνησε σε βάθος την περίπτωσή μου, ευγενέστατος, μου ενέπνευσε εμπιστοσύνη." },
+                            { score: "9.6", name: "ΣΑΒΒΑΣ", count: "1 αξιολόγηση", date: "03 Φεβρουαρίου 2023", text: "Υπαρχει ενα 'ευχαριστο' κλιμα κατα τη διαρκεια της εξετασης ! Ο ιατρος επεξηγει ολα οσα διαπιστωνει με τροπο που δεν σε αγχωνει ! Κερδιζει την εμπιστοσυνη σου με την καλη επαρκεια του ! Τον συνιστω ανεπιφυλακτα !!!" },
+                            { score: "10.0", name: "Βλαδίμηρος", count: "1 αξιολόγηση", date: "30 Ιανουαρίου 2023", text: "Εξαιρετικός γιατρός. Επαγγελματίας και συνεπής στο ραντεβού του." },
+                            { score: "10.0", name: "ΑΓΓΕΛΟΣ", count: "1 αξιολόγηση", date: "24 Ιανουαρίου 2023", text: "Έμεινα απόλυτα ευχαριστημένη από την επίσκεψη στο γιατρό. Ήταν ακριβής στο ραντεβού και απόλυτα κατανοητός σε όσα έλεγε. Μου ενέπνευσε μεγάλη εμπιστοσύνη." },
+                            { score: "10.0", name: "ΔΗΜΗΤΡΗΣ", count: "1 αξιολόγηση", date: "17 Ιανουαρίου 2023", text: "Σοβαρος και αρκετα λεπτομερης στην συνταξη του ιστορικου αλλα και στην εξεταση του ασθενους" },
+                            { score: "10.0", name: "Κωνσταντίνος", count: "7 αξιολογήσεις", date: "11 Ιανουαρίου 2023", text: "Όλα ήταν καλά!δεν υπήρχε κάποιο πρόβλημα." },
+                            { score: "10.0", name: "ΔΗΜΗΤΡΙΟΣ", count: "1 αξιολόγηση", date: "10 Ιανουαρίου 2023", text: "ΑΨΟΓΟΣ ΓΙΑΤΡΟΣ.ΤΟΝ ΣΥΣΤΉΝΩ ΑΝΕΠΙΦΎΛΑΚΤΑ" },
+                            { score: "10.0", name: "ΣΤΑΜΑΤΗΣ", count: "8 αξιολογήσεις", date: "24 Δεκεμβρίου 2022", text: "Συνεπής στην ώρα του ραντεβού. Με άκουσε προσεκτικά, με εξέτασε και μου εξήγησε τα πάντα. Βρήκε λύση στο πρόβλημα μου και έμεινα απόλυτα ικανοποιημένος. Τέλος το ιατρείο είναι πολύ ευχάριστος χώρος! Προτείνεται ανεπιφύλακτα!" },
+                            { score: "10.0", name: "ΔΕΣΠΟΙΝΑ", count: "1 αξιολόγηση", date: "22 Δεκεμβρίου 2022", text: "Είναι η 2η φορά που επισκέπτομαι τον κ.Κατράνα. Ο γιατρός είναι ευγενικός, καταρτισμένος, αναλυτικός και ασχολείται σε βάθος. 10/10 προτείνεται ανεπιφύλακτα" },
+                            { score: "10.0", name: "Παναγιώτης", count: "2 αξιολογήσεις", date: "25 Νοεμβρίου 2022", text: "Πολύ καλός. Εμπειρος, εξυπηρετικος, έδειξε ενδιαφέρον. Με εξετασε,με βοήθησε πολύ. Πήγα χάλια, αγχωμένος, έφυγα ήρεμος." },
+                            { score: "10.0", name: "Βασίλης", count: "2 αξιολογήσεις", date: "19 Νοεμβρίου 2022", text: "Φιλικός, ευγενικοτατος, τυπικός, και απόλυτα επεξηγηματικος ως προς τα ιατρικά ζητήματα. Δεν υπάρχει κανένας λόγος να μην τον επιλέξεις." },
+                            { score: "10.0", name: "KATERINA", count: "3 αξιολογήσεις", date: "12 Νοεμβρίου 2022", text: "Πολύ καλός, ενδιαφέρθηκε για την περίπτωση μου και παρόλο που η επίσκεψη ήταν για ένα απλό ηλεκτροκαρδιογράφημα , ήταν αναλυτικός και διέθεσε τον ανάλογο χρόνο." },
+                            { score: "10.0", name: "Αποστόλης", count: "5 αξιολογήσεις", date: "02 Νοεμβρίου 2022", text: "Πολύ φιλικός, με έκανε να νιώσω άνετα και εξέτασε εις βάθος την περίπτωση μου." },
+                            { score: "10.0", name: "Georgia", count: "1 αξιολόγηση", date: "07 Ιουνίου 2022", text: "Πολύ προσιτός κύριος και διακριτικός , με έκανε να νιώσω άνετα από την πρώτη στιγμή." },
+                            { score: "10.0", name: "Grigoris", count: "1 αξιολόγηση", date: "23 Μαρτίου 2022", text: "Σωστός, έκανε λεπτομερή εξέταση." },
+                            { score: "9.8", name: "Μιχάλης", count: "5 αξιολογήσεις", date: "11 Μαρτίου 2022", text: "Ο κ. Κατράνας είναι σωστός επαγγελματίας στο αντικείμενο του. Μου έδωσε να καταλάβω εξ ολοκλήρου τι πρέπει να κάνω για το πρόβλημα μου και παράλληλα με καθησύχασε. Φιλικός και ευγενικός, τον συνιστώ ανεπιφύλακτα!" },
+                            { score: "10.0", name: "Βασιλική", count: "3 αξιολογήσεις", date: "10 Μαρτίου 2022", text: "Η εντύπωση που μου δημιουργήθηκε για τον κύριο Κατράνα από την πρώτη μου επίσκεψη είναι ότι πρόκειται για έναν άνθρωπο που συναρμόζεται πλήρως με το προφίλ ενός εξαιρετικού ιατρού. Επικοινωνιακός και προσηνής, έλαβε ενδελεχώς το ιστορικό, ακροάστηκε τις ανησυχίες μου ενεργητικά και ήταν επεξηγηματικός στις απορίες μου." },
+                            { score: "10.0", name: "Evangelos", count: "6 αξιολογήσεις", date: "05 Μαρτίου 2022", text: "Εξαιρετικη αντιμετωπιση, ημουν το τελευταιο ραντεβου της ημερας και η επισκεψη κρατησε σχεδον 1 ωρα καθως ο κ. Κατρανας ασχοληθηκε σχολαστικα και εξονυχιστικα, περα απο καθε προσδοκια. Ενεπνευσε εμπιστοσυνη και σιγουρια. Το ιδιο και την επομενη μερα που χρειαστηκε να ξαναπαω. Θα προτεινα τον κ. Κατρανα ανεπιφυλακτα. Με δυο λεξεις: εξαιρετικος επαγγελματιας." },
+                            { score: "10.0", name: "ΚΡΙΣΤΙΝΑ ΙΣΑΜΠΕΛ", count: "2 αξιολογήσεις", date: "09 Ιανουαρίου 2022", text: "Τρίτη φορά που επισκέφθηκα τον συγκεκριμένο γιατρό και η αρχική μου άποψη δεν αλλάζει. Είναι εξαιρετικός, συνεπής, διακριτικός και τον συστήνω ανεπιφύλακτα." },
+                            { score: "10.0", name: "Νικη", count: "1 αξιολόγηση", date: "05 Ιανουαρίου 2022", text: "Εξαιρετικός γιατρός.. Ασχολήθηκε με πολύ προσοχή κ κατανόηση για την περίπτωση μου κ με σεβασμό..άκουγε προσεχτικά κ έχει πολύ καλη γνώση του αντικειμένου του.Τον συστήνω χωρίς δεύτερη σκέψη. Επίσης είναι πολύ ευφυής άνθρωπος." },
+                            { score: "9.8", name: "Αθανασια", count: "1 αξιολόγηση", date: "07 Δεκεμβρίου 2021", text: "Παρα πολυ καλος γιατρος και καταρτισμενος" },
+                            { score: "10.0", name: "ΠΑΣΧΑΛΙΝΑ", count: "1 αξιολόγηση", date: "02 Δεκεμβρίου 2021", text: "ΠΟΛΥ ΚΑΛΟΣ ΓΙΑΤΡΟΣ ,ΜΟΥ ΤΑ ΕΞΗΓΗΣΕ ΟΛΑ ΜΕ ΛΕΠΤΟΜΈΡΕΙΕΣ." },
+                            { score: "9.6", name: "Ευαγγελια", count: "1 αξιολόγηση", date: "01 Δεκεμβρίου 2021", text: "Έμεινα ευχαριστημένη.Καταρτισμένος, καλή προσέγγιση.Λεπτομερής εξέταση. Τον προτείνω." },
+                            { score: "9.8", name: "Σωτηρία", count: "2 αξιολογήσεις", date: "30 Νοεμβρίου 2021", text: "Εξαιρετικος γιατρός πηρε το ιστορικο και εξετασε σε βαθος την περίπτωση μου." },
+                            { score: "9.8", name: "Nina", count: "2 αξιολογήσεις", date: "09 Νοεμβρίου 2021", text: "Ενας εξαιρετικος επιστημονας και ανθρωπος!!" },
+                            { score: "10.0", name: "ΣΤΥΛΙΑΝΟΣ", count: "3 αξιολογήσεις", date: "08 Νοεμβρίου 2021", text: "Ήταν πολύ εντάξει σε όλα του. Ασχολήθηκε με ενδιαφέρον." },
+                            { score: "10.0", name: "ΔΗΜΗΤΡΙΟΣ", count: "1 αξιολόγηση", date: "14 Οκτωβρίου 2021", text: "Αριστος σε ολα, καμια παρατηρηση..." },
+                            { score: "10.0", name: "Eftichia", count: "5 αξιολογήσεις", date: "28 Σεπτεμβρίου 2021", text: "Ο κ. Κατράνας ήταν πολύ ευγενικός, φιλικός και μου ενέπνευσε αμέσως εμπιστοσύνη. Έμεινα πολύ ικανοποιημένη κυρίως με το πόσο μεθοδικός και διεξοδικός ήταν στην εξέταση της περίπτωσης μου. Θα τον συστήσω σίγουρα και σε γνωστούς μου." },
+                            { score: "10.0", name: "ΜΕΛΑΝΙΑ-ΚΩΝΣΤΑΝΤΙΑ", count: "1 αξιολόγηση", date: "25 Σεπτεμβρίου 2021", text: "Πολύ ευγενικός, συνεπής στην ώρα του και συζητήσιμος." },
+                            { score: "10.0", name: "ΕΛΕΝΗ", count: "1 αξιολόγηση", date: "22 Σεπτεμβρίου 2021", text: "ΕΞΕΤΑΣΕ ΤΑ ΠΑΙΔΙΑ ΜΟΥ ΚΑΙ ΤΟΝ ΑΝΤΡΑ ΜΟΥ. ΑΡΙΣΤΑ" },
+                            { score: "10.0", name: "ΑΡΣΕΝΙΟΣ", count: "1 αξιολόγηση", date: "16 Σεπτεμβρίου 2021", text: "Πήγα για μια κάρτα υγείας και αθλητή. Με εξέτασε κανονικά όπως πρέπει και ήταν πολύ ευγενικός γιατρός. Τον συνιστώ ανεπιφύλακτα." },
+                            { score: "10.0", name: "Ζώης", count: "1 αξιολόγηση", date: "16 Σεπτεμβρίου 2021", text: "Θα τον συνιστούσα ανεπιφύλακτα. Έκανε πολλες διερευνητικές ερωτήσεις κι έλυσε όλες τις απορίες μας με απλό και κατανοητό λόγο." },
+                            { score: "8.8", name: "ΠΑΝΑΓΙΩΤΗΣ", count: "1 αξιολόγηση", date: "30 Αυγούστου 2021", text: "Μελέτησε την υπόθεσή μου με σεβασμό." },
+                            { score: "10.0", name: "ΜΑΡΙΑ", count: "1 αξιολόγηση", date: "30 Αυγούστου 2021", text: "ΕΞΑΙΡΕΤΙΚΟΣ ΠΟΛΥ ΓΛΥΚΟΣ ΚΑΙ ΑΝΘΡΩΠΙΝΟΣ" },
+                            { score: "9.4", name: "ΜΑΡΙΑ", count: "1 αξιολόγηση", date: "27 Αυγούστου 2021", text: "Ήταν η δεύτερη επίσκεψή μου στο συγκεκριμένο γιατρό. Οι εντυπώσεις μου ήταν για άλλη μια φορά ιδιαίτερα θετικές. Τυπικός, διακριτικός, ευγενικός και πολύ εξυπηρετικός. Σίγουρα θα τον επισκεφθώ ξανά." },
+                            { score: "10.0", name: "ΑΛΈΞΑΝΔΡΟΣ", count: "2 αξιολογήσεις", date: "25 Αυγούστου 2021", text: "Επαγγελματική Συμπεριφορά και Επικοινωνιακά Άρτιος" },
+                            { score: "10.0", name: "Μάριος", count: "3 αξιολογήσεις", date: "20 Αυγούστου 2021", text: "Όλα άψογα, ο γιατρός είναι εξαιρετικός. Ευγενικός, αναλυτικός, και σου εμπνέει εμπιστοσύνη" },
+                            { score: "8.2", name: "Μιχάλης", count: "5 αξιολογήσεις", date: "03 Αυγούστου 2021", text: "Ο γιατρός είναι πολύ καλός επαγγελματίας και φαίνεται ότι έχει γνώση στο αντικείμενο του. Αυτό που δεν μου άρεσε εμένα είναι ότι δεν ένιωθα άνετα και δεν μου δόθηκε η δυνατότητα να τον εμπιστευτώ, πέρα από το να μου πει τα αποτελέσματα των εξετάσεων μου." },
+                            { score: "10.0", name: "Dimitris", count: "7 αξιολογήσεις", date: "23 Ιουλίου 2021", text: "Άψογος επιστήμονας, ευγενέστατος και πλήρως καταρτισμένος. Με βοήθησε πολύ και μου κέρδισε την εμπιστοσύνη. Θα τον συνιστούσα ανεπιφύλακτα." },
+                            { score: "9.2", name: "SAVINA", count: "1 αξιολόγηση", date: "12 Ιουλίου 2021", text: "Πολύ προσιτός, ήρεμος και δείχνει ενδιαφέρον για τον ασθενή του." },
+                            { score: "10.0", name: "Πασχαλια", count: "3 αξιολογήσεις", date: "06 Ιουλίου 2021", text: "Πήγα για να πάρω βεβαίωση για κολυμβητηριο και μου έκανε καρδιογράφημα όπως και συζητήσαμε για το ιστορικό μου ..ευγενεστατος έδειξε να ασχολείται πραγματικά με τον ασθενή ..θα τον συνιστούσα σίγουρα" },
+                            { score: "10.0", name: "Spiros", count: "7 αξιολογήσεις", date: "25 Ιουνίου 2021", text: "Άριστος γιατρός, εξαιρετική αντιμετώπιση και βοήθεια." },
+                            { score: "10.0", name: "Στελλα", count: "3 αξιολογήσεις", date: "25 Ιουνίου 2021", text: "Εξαιρετικος επιστημονας! Μου ενεπνευσε εμπιστοσυνη!" },
+                            { score: "10.0", name: "ΕΥΑ", count: "2 αξιολογήσεις", date: "15 Ιουνίου 2021", text: "Εξαιρετικός σε όλα! Άριστες οι εντυπώσεις από την επίσκεψή μου. Θα τον συστήσω σε φίλους και συγγενείς και σίγουρα θα τον ξαναεπισκεφθώ!!!" },
+                            { score: "10.0", name: "Γεωργιος", count: "1 αξιολόγηση", date: "02 Ιουνίου 2021", text: "Πολλή καταρτισμένος και αξιόλογος γιατρός, έμεινα πολλή ευχαριστημενος απ'την πρώτη μου επίσκεψη.Με εξέτασε ενδελεχώς και χωρίς πίεση χρόνου και άκουσε το ιστορικό μου.Τονπροτείνω ανεπιφύλακτα." },
+                            { score: "10.0", name: "ΠΑΝΑΓΙΩΤΗΣ", count: "2 αξιολογήσεις", date: "15 Μαΐου 2021", text: "Εξαίρετος ιατρός , πρώτα απο όλα είναι άνθρωπος στο λειτούργημα που πράττει. Να συνεχίσει το ιατρικό του έργο προς όφελος των ανθρώπων που τον έχει ανάγκη . Προσωπικά, τον ευχαριστώ για όλα εγκαρδίως τον κο Κατράνα Σωτήριο." },
+                            { score: "10.0", name: "Σοφία", count: "1 αξιολόγηση", date: "21 Απριλίου 2021", text: "Εξαιρετικος επιστημονας με τελεια απλη και κατανοητη αναλυση" },
+                            { score: "10.0", name: "Γεωργία", count: "1 αξιολόγηση", date: "08 Απριλίου 2021", text: "Ηταν αρκετα σχολαστικος οταν πηρε το ιστορικο μου καθως και οταν ελεγξε προηγουμενες και τωρινες εξετασεις. Ερευνησε καθε ενδεχομενο. Εμπνεει εμπιστοσυνη" },
+                            { score: "10.0", name: "Lesley", count: "5 αξιολογήσεις", date: "07 Απριλίου 2021", text: "I was grateful we could communicate in English. He was very thorough and made me feel quite comfortable. Very thankful I have found this doctor." },
+                            { score: "9.8", name: "Αδαμαντία", count: "1 αξιολόγηση", date: "27 Μαρτίου 2021", text: "Πολύ καλός γιατρός, ευγενικός, ομιλητικός και σου εξηγεί τα πάντα με ακρίβεια !" },
+                            { score: "9.4", name: "ΑΓΓΕΛΙΚΗ", count: "2 αξιολογήσεις", date: "16 Μαρτίου 2021", text: "Είναι πολύ καλός γιατρός. Εξηγεί και αναλύει τα στοιχεία-αποτελέσματα των επιμέρους εξετάσεων, και χρησιμοποιεί και σύγχρονες μεθόδους επικοινωνίας με τους ασθενείς (π.χ. αποστολή αποτελεσμάτων με ηλεκτρονικό ταχυδρομείο)." },
+                            { score: "10.0", name: "Γεώργιος", count: "1 αξιολόγηση", date: "30 Δεκεμβρίου 2020", text: "Επαγγελματίας συγχαρητήρια!! Θα ξαναπάω εννοείται" },
+                            { score: "9.8", name: "Ευαγγελος", count: "3 αξιολογήσεις", date: "18 Δεκεμβρίου 2020", text: "Επιστημονικά άριστα καταρτισμένος και σχολαστικός στη διάγνωση. Ελπίζω η αποτελεσματικότητα της φαρμακευτικής αγωγής που προτάθηκε να είναι ανάλογη. Τον συστήνω ανεπιφύλακτα." },
+                            { score: "10.0", name: "ΠΕΡΙΚΛΗΣ", count: "2 αξιολογήσεις", date: "15 Δεκεμβρίου 2020", text: "Πολύ καλός ιατρός, ασχολήθηκε διεξοδικά με το πρόβλημά μου." },
+                            { score: "10.0", name: "Κωνσταντίνος", count: "7 αξιολογήσεις", date: "14 Οκτωβρίου 2020", text: "Πολύ καλός!ασχολήθηκε σε βαθος" },
+                            { score: "10.0", name: "ΣΤΥΛΙΑΝΟΣ", count: "3 αξιολογήσεις", date: "06 Οκτωβρίου 2020", text: "Όλα έγιναν όπως έπρεπε να γίνουν." },
+                            { score: "10.0", name: "ΑΝΑΣΤΑΣΙΑ", count: "1 αξιολόγηση", date: "05 Οκτωβρίου 2020", text: "ο γιατρός ήταν πολυ εξυπηρετικός και ασχολήθηκε όσο έπρεπε με την περίπτωση μας. Τον προτείνω ανεπιφύλακτα." },
+                            { score: "10.0", name: "Βασίλης", count: "1 αξιολόγηση", date: "04 Οκτωβρίου 2020", text: "Ευγενικός συνεπής στην ώρα του και πολύ καλός επιστήμονας.Για μια κάρτα υγείας αθλητή της μικρής την εξέτασε κανονικά." },
+                            { score: "10.0", name: "Παναγιώτης", count: "1 αξιολόγηση", date: "30 Σεπτεμβρίου 2020", text: "Εξυπηρετικοτατος γιατρός προσιτός στις τιμές και πολύ καρτατισμενος." },
+                            { score: "9.6", name: "Deleted", count: "1 αξιολόγηση", date: "24 Σεπτεμβρίου 2020", text: "Πηγα για κάρτα υγειας αθλητη και εμεινα πολυ ευχαριστημένος, ήταν πολυ φιλικος και ευγενικός, με ρωτησε ολο το ιστορικο μου, πολυ οικονομικος , σαν πρώτη εντύπωση ηταν εξαιρετικος. Αν χρειαστεί θα τον ξαναπροτιμησω." },
+                            { score: "10.0", name: "Χριστίνα", count: "3 αξιολογήσεις", date: "23 Σεπτεμβρίου 2020", text: "Δεν βιαζόταν να τελειώσει με το θέμα μου, μου έδωσε χρήσιμες πληροφορίες και εξηγήσεις με το θέμα που με αφορούσε σχετικά." },
+                            { score: "9.0", name: "Μαρία", count: "2 αξιολογήσεις", date: "22 Σεπτεμβρίου 2020", text: "επισκεφτηκα το γιατρο για μια βεβαιωση αθλητη. ερευνησε ολο το ιστορικο μου επαρκως και μου εκανε τις απαραιτητες βασικες εξετασεις. ηταν πολυ προσιτος και επεξηγηματικος και εμεινα ευχαριστημενη" },
+                            { score: "10.0", name: "ΑΡΣΕΝΙΟΣ", count: "3 αξιολογήσεις", date: "19 Σεπτεμβρίου 2020", text: "Πολύ καλός γιατρός. Φιλικός, με καλές γνώσεις στο αντικείμενο." },
+                            { score: "10.0", name: "Νικιφορος", count: "1 αξιολόγηση", date: "17 Σεπτεμβρίου 2020", text: "Εξαιρετικος γιατρος καταρτισμενος !! Τον συστηνω ανεπιφυλακτα !" },
+                            { score: "9.4", name: "ΣΟΦΙΑ", count: "3 αξιολογήσεις", date: "16 Σεπτεμβρίου 2020", text: "Αξιόλογος Γιατρός, τον συνιστώ ανεπιφύλακτα." }
+                        ];
+
+                        // Duplicate array to ensure smooth infinite marquee
+                        const displayReviews = [...reviews, ...reviews];
+
+                        displayReviews.forEach(r => {
+                            document.write(`
+                                <div class="w-80 sm:w-[26rem] bg-white p-8 rounded-3xl shadow-soft shrink-0 border border-med-gray/50 relative flex flex-col justify-between hover:border-med-teal transition-colors">
+                                    <div>
+                                        <div class="flex justify-between items-start mb-4">
+                                            <div class="flex items-center gap-1 text-yellow-400 mb-1">
+                                                <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                            </div>
+                                            <span class="font-bold text-med-black text-lg">${r.score} / 10</span>
+                                        </div>
+                                        <p class="text-med-charcoal text-sm mb-6 italic leading-relaxed">"${r.text}"</p>
+                                    </div>
+                                    <div class="border-t border-med-gray/50 pt-4 mt-auto">
+                                        <p class="text-xs font-bold text-med-black no-accents">${r.name}</p>
+                                        <p class="text-xs text-med-charcoal/60">${r.date} • ${r.count}</p>
+                                        <p class="text-xs text-med-teal font-medium mt-1">Επιβεβαιωμένος Ασθενής</p>
+                                    </div>
+                                </div>
+                            `);
+                        });
+                    </script>
+                </div>
             </div>
             
             <div class="flex justify-center mt-12 reveal">
-                <a href="https://www.google.com/search?client=safari&hs=Fw0p&sa=X&sca_esv=780a66cf752212b8&rls=en&biw=1728&bih=994&sxsrf=ANbL-n6JcdwTkENvzeFo-94GPoVzOcm_gw:1780565215391&q=Κατράνας+Σωτήριος+Καρδιολόγος+Reviews&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2NrUwMrMwNLSwMDM3tbA0MrM02sDI-IrR4dyscxvPt5xvPLfm3F4gq0nh3OLznedbzq0DCu08tx8kAFLReG4LiHtu9_mec5vBwkGpZZmp5cWLWCk2AgCbC5HUoAAAAA&rldimm=3582681188675892692&tbm=lcl&hl=en-GR&ved=2ahUKEwiXtqapou2UAxXkQvEDHZ_VNzQQ9fQKegQISRAI#lkt=LocalPoiReviews" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-bold hover:underline text-lg">
+                <a href="https://www.google.com/search?client=safari&hs=Fw0p&sa=X&sca_esv=780a66cf752212b8&rls=en&biw=1728&bih=994&sxsrf=ANbL-n6JcdwTkENvzeFo-94GPoVzOcm_gw:1780565215391&q=Κατράνας+Σωτήριος+Καρδιολόγος+Reviews&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2NrUwMrMwNLSwMDM3tbA0MrM02sDI-IrR4dyscxvPt5xvPLfm3F4gq0nh3OLznedbzq0DCu08tx8kAFLReG4LiHtu9_mec5vBwkGpZZmp5cWLWCk2AgCbC5HUoAAAAA&rldimm=3582681188675892692&tbm=lcl&hl=en-GR&ved=2ahUKEwiXtqapou2UAxXkQvEDHZ_VNzQQ9fQKegQISRAI#lkt=LocalPoiReviews" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-bold hover:underline text-lg flex items-center gap-2">
                     Διαβάστε περισσότερα σχόλια στη Google
+                    <i data-lucide="external-link" class="w-5 h-5"></i>
                 </a>
             </div>
         </div>
     </section>
 
+    <!-- Contact & Footer -->
     <footer id="contact" class="bg-med-black text-white pt-24 pb-10 relative overflow-hidden">
         <div class="absolute top-0 right-0 w-[40rem] h-[40rem] bg-med-teal/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
         
@@ -431,7 +605,12 @@
                     <ul class="space-y-5 text-white/80">
                         <li class="flex items-start gap-4">
                             <i data-lucide="map-pin" class="w-6 h-6 text-med-red shrink-0 mt-0.5"></i>
-                            <span class="leading-relaxed">Κωνσταντίνου Καραμανλή 145<br>(περιοχή Μαρτίου), Τ.Κ. 54249<br>Θεσσαλονίκη, 4ος όροφος</span>
+                            <span class="leading-relaxed">
+                                Κωνσταντίνου Καραμανλή<br>
+                                145 (περιοχή Μαρτίου)<br>
+                                Τ.Κ. 54249, Θεσσαλονίκη<br>
+                                4ος όροφος
+                            </span>
                         </li>
                         <li class="flex items-center gap-4">
                             <i data-lucide="phone" class="w-6 h-6 text-med-red shrink-0"></i>
@@ -459,9 +638,9 @@
                         </li>
                     </ul>
                     
-                    <a href="#contact" class="mt-8 inline-flex items-center justify-center w-full bg-med-red text-white px-6 py-4 rounded-xl font-bold hover:bg-white hover:text-med-red transition-colors duration-300 shadow-glow-red">
+                    <button onclick="openBookingModal()" class="mt-8 inline-flex items-center justify-center w-full bg-med-red text-white px-6 py-4 rounded-xl font-bold hover:bg-white hover:text-med-red transition-colors duration-300 shadow-glow-red">
                         Κλείστε Ραντεβού
-                    </a>
+                    </button>
                 </div>
 
             </div>
@@ -475,6 +654,44 @@
         </div>
     </footer>
 
+    <!-- Booking Modal (Google Calendar system) -->
+    <div id="booking-modal" class="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center hidden">
+        <div class="bg-white rounded-3xl p-8 max-w-lg w-full mx-4 shadow-2xl relative">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-med-charcoal hover:text-med-red transition-colors">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+            <h3 class="text-2xl font-serif text-med-black mb-6 border-b pb-4">Επιλογή Ραντεβού</h3>
+            
+            <form id="booking-form" onsubmit="submitBooking(event)">
+                <div class="mb-6">
+                    <label class="block text-sm font-bold text-med-charcoal mb-2" for="reason">Αιτιολογία Επίσκεψης *</label>
+                    <select id="reason" required class="w-full border border-med-gray rounded-xl p-3 text-med-charcoal focus:outline-none focus:border-med-teal focus:ring-1 focus:ring-med-teal">
+                        <option value="" disabled selected>Επιλέξτε Υπηρεσία</option>
+                        <option value="Δελτίο αθλητή / προαθλητικός έλεγχος">Δελτίο αθλητή / προαθλητικός έλεγχος [Διάρκεια: 15']</option>
+                        <option value="Ηλεκτροκαρδιογράφημα">Ηλεκτροκαρδιογράφημα [Διάρκεια: 15']</option>
+                        <option value="Απλή καρδιολογική εξέταση (χωρίς triplex)">Απλή καρδιολογική εξέταση (δεν περιλαμβάνει triplex καρδιάς) [Διάρκεια: 30']</option>
+                        <option value="Πλήρης καρδιολογική εξέταση (με triplex)">Πλήρης καρδιολογική εξέταση (περιλαμβάνει triplex καρδιάς) [Διάρκεια: 30']</option>
+                        <option value="Προεγχειρητικός έλεγχος (με triplex)">Προεγχειρητικός έλεγχος (περιλαμβάνει triplex καρδιάς) [Διάρκεια: 30']</option>
+                        <option value="Holter καρδιακού ρυθμού">Holter καρδιακού ρυθμού [Διάρκεια: 15']</option>
+                        <option value="Δοκιμασία κοπώσεως">Δοκιμασία κοπώσεως [Διάρκεια: 30']</option>
+                        <option value="Συνταγογράφηση">Συνταγογράφηση [Διάρκεια: 15']</option>
+                    </select>
+                </div>
+                
+                <div class="mb-8">
+                    <label class="block text-sm font-bold text-med-charcoal mb-2" for="phone">Αριθμός Τηλεφώνου *</label>
+                    <input type="tel" id="phone" required placeholder="π.χ. 6900000000" class="w-full border border-med-gray rounded-xl p-3 text-med-charcoal focus:outline-none focus:border-med-teal focus:ring-1 focus:ring-med-teal">
+                    <p class="text-xs text-med-charcoal/60 mt-2">Το τηλέφωνο είναι υποχρεωτικό για την άμεση επικοινωνία/επιβεβαίωση του ραντεβού.</p>
+                </div>
+
+                <button type="submit" class="w-full bg-med-teal text-white font-bold py-4 rounded-xl hover:bg-med-black transition-colors flex justify-center items-center gap-2 shadow-glow-teal">
+                    Συνέχεια στο Ημερολόγιο <i data-lucide="calendar" class="w-5 h-5"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Review Modal (Admin Approval system frontend) -->
     <div id="review-modal" class="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center hidden">
         <div class="bg-white rounded-3xl p-8 max-w-lg w-full mx-4 shadow-2xl relative">
             <button onclick="closeReviewModal()" class="absolute top-4 right-4 text-med-charcoal hover:text-med-red transition-colors">
@@ -483,17 +700,15 @@
             <h3 class="text-2xl font-serif text-med-black mb-2">Η Αξιολόγησή σας</h3>
             <p class="text-sm text-med-charcoal/70 mb-6 border-b pb-4">Μοιραστείτε την εμπειρία σας μαζί μας.</p>
             
-            <form id="review-form" name="patient-reviews" method="POST" data-netlify="true" onsubmit="submitReview(event)">
-                <input type="hidden" name="form-name" value="patient-reviews" />
-                
+            <form id="review-form" onsubmit="submitReview(event)">
                 <div class="mb-4">
                     <label class="block text-sm font-bold text-med-charcoal mb-2" for="rev-name">Ονοματεπώνυμο *</label>
-                    <input type="text" id="rev-name" name="patient-name" required class="w-full border border-med-gray rounded-xl p-3 text-med-charcoal focus:outline-none focus:border-med-teal">
+                    <input type="text" id="rev-name" required class="w-full border border-med-gray rounded-xl p-3 text-med-charcoal focus:outline-none focus:border-med-teal">
                 </div>
                 
                 <div class="mb-6">
                     <label class="block text-sm font-bold text-med-charcoal mb-2" for="rev-text">Σχόλιο *</label>
-                    <textarea id="rev-text" name="patient-msg" required rows="4" class="w-full border border-med-gray rounded-xl p-3 text-med-charcoal focus:outline-none focus:border-med-teal"></textarea>
+                    <textarea id="rev-text" required rows="4" class="w-full border border-med-gray rounded-xl p-3 text-med-charcoal focus:outline-none focus:border-med-teal"></textarea>
                 </div>
 
                 <button type="submit" class="w-full bg-med-black text-white font-bold py-4 rounded-xl hover:bg-med-teal transition-colors">
@@ -510,6 +725,7 @@
         </div>
     </div>
 
+    <!-- Lightbox for Images -->
     <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center cursor-zoom-out hidden" onclick="closeLightbox()">
         <button class="absolute top-6 right-6 text-white hover:text-med-red transition-colors">
             <i data-lucide="x" class="w-10 h-10"></i>
@@ -518,80 +734,10 @@
     </div>
 
     <script>
-        // Default Review Dataset Fallback Pool
-        const defaultReviews = [
-            { score: "10.0", text: "Εξαιρετικός γιατρός, πολύ ευγενικός και επεξηγηματικός. Μου ενέπνευσε εμπιστοσύνη από την πρώτη στιγμή και αφιέρωσε χρόνο να ακούσει προσεκτικά το ιστορικό μου...", name: "Ευτυχία" },
-            { score: "10.0", text: "Καταπληκτικός γιατρός, κατανόησε το ζήτημα και έδωσε πρακτικές συμβουλές.", name: "Αγγελική" },
-            { score: "10.0", text: "Ήταν το πρώτο ραντεβού με τον γιατρό και έμεινα πολύ ευχαριστημένη! Πολύ ευγενικός άνθρωπος και κατατοπιστικός.", name: "Ευγενια" },
-            { score: "10.0", text: "Εξαιρετικός καρδιολόγος! Πολύ προσεκτικός και αναλυτικός. Είμαι πολύ ικανοποιημένη!", name: "Νεκταρια" },
-            { score: "10.0", text: "Πολύ θετική εμπειρία. Επεξηγηματικός και καθησυχαστικός γιατρός που εμπνέει εμπιστοσύνη. Προσιτός, ευγενέστατος και φιλικός...", name: "Σάββας" },
-            { score: "10.0", text: "Φιλικός και εξυπηρετικός. Είχε την κατάρτιση ακριβώς πάνω στο θέμα μου.", name: "ΜΑΡΙΑ" },
-            { score: "10.0", text: "Εκτός από τις γνώσεις του, ξεχώρισε για την ανθρωπιά και την κατανόησή του, αφιέρωσε χρόνο να μου εξηγήσει τα πάντα...", name: "Αναστασία" },
-            { score: "10.0", text: "ΕΞΑΙΡΕΤΙΚΟΣ. Αφιερώνει χρόνο, δεν βιάζεται να 'ξεπετάξει' τον ασθενή, δεν σε απελπίζει. Σου δίνει λύσεις και σου αναπτερώνει το ηθικό...", name: "ΑΘΑΝΑΣΙΑ" },
-            { score: "10.0", text: "Πολύ ευγενικός και αναλυτικος.", name: "Δέσποινα" },
-            { score: "10.0", text: "Πολύ καλός, ευγενέστατος και ασχολήθηκε πολυ", name: "Δημητρης" },
-            { score: "10.0", text: "Σωστός επαγγελματίας, συνεπής και κατατοπιστικός. Πολύ καλή εμπειρία συνολικά.", name: "ΜΑΡΙΑ" },
-            { score: "10.0", text: "Διερεύνησε σε βάθος την περίπτωση μου και μου ενέπνευσε εμπιστοσύνη. Ευγενικός άνθρωπος και εξαιρετικός επιστήμων.", name: "ΣΩΚΡΑΤΗΣ" },
-            { score: "9.8", text: "Καλός καλος εξωτερικός αμέσως με εξέτασε και ασχολήθηκε foul του foul", name: "Ιωάννης" },
-            { score: "10.0", text: "Προσιτός, κατανοητός και άρτια καταρτισμένος ο γιατρός.", name: "Κρόντσος" },
-            { score: "10.0", text: "Ο γιατρός με εξέτασε αναλυτικά και έδειξε προσωπικό ενδιαφέρον. Τον συστήνω.", name: "Katsipis" },
-            { score: "10.0", text: "Έμπειρος και πολύ καλός γιατρός . Άριστος επιστήμονας με ανθρωπιά και φιλική προσέγγιση στους ασθενείς του!!", name: "Eleni" },
-            { score: "9.8", text: "Ασχοληθηκε σε βαθος με την εξεταση, εμπειρος, συνεπεια στο ραντεβου.", name: "ΑΛΚΗΣ" },
-            { score: "9.8", text: "Εξαιρετικός γιατρός και άνθρωπος! Ήταν πολύ προσεκτικός, ευγενικός και απίστευτα επικοινωνιακός με το παιδί. Άψογος επαγγελματίας.", name: "ΜΑΡΙΟΣ ΚΩΝΣΤΑΝΤΙΝΟΣ" }
-        ];
+        // 1. Initialize Icons
+        lucide.createIcons();
 
-        // Dynamic Loading Engine via AJAX Local Lookup 
-        async function loadActiveReviews() {
-            const displayPool = document.getElementById('reviews-container');
-            let workingSet = defaultReviews;
-
-            try {
-                const query = await fetch('/reviews.json');
-                if (query.ok) {
-                    const parsedData = await query.json();
-                    let cmsReviews = [];
-                    if (Array.isArray(parsedData)) {
-                        cmsReviews = parsedData;
-                    } else if (parsedData && Array.isArray(parsedData.reviews)) {
-                        cmsReviews = parsedData.reviews;
-                    }
-                    // We merge the CMS reviews with the default ones so the scroll never breaks!
-                    workingSet = [...cmsReviews, ...defaultReviews];
-                }
-            } catch (err) {
-                console.log("Decap CMS reviews not generated yet. Running default fallback data.");
-            }
-
-            // Loop twice to handle beautiful seamless marquee infinite scroll spacing
-            const doubleLoop = [...workingSet, ...workingSet];
-            displayPool.innerHTML = doubleLoop.map(r => `
-                <div class="w-80 sm:w-96 bg-white p-8 rounded-3xl shadow-soft shrink-0 border border-med-gray/50 relative flex flex-col justify-between hover:border-med-teal transition-colors">
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="flex items-center gap-1 text-yellow-400 mb-1">
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            </div>
-                            <span class="font-bold text-med-black">${r.score} / 10</span>
-                        </div>
-                        <p class="text-med-charcoal text-sm mb-6 italic leading-relaxed">"${r.text}"</p>
-                    </div>
-                    <div class="border-t border-med-gray/50 pt-4 mt-auto">
-                        <p class="text-xs font-bold text-med-black no-accents">${r.name}</p>
-                        <p class="text-xs text-med-teal">Επιβεβαιωμένος Ασθενής</p>
-                    </div>
-                </div>
-            `).join('');
-
-            if (window.lucide) lucide.createIcons();
-        }
-
-        // Initialize Everything on Screen Fire
-        window.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-            loadActiveReviews();
-        });
-
-        // Mobile Menu
+        // 2. Mobile Menu
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -608,7 +754,7 @@
             });
         });
 
-        // Navbar Scroll Effect
+        // 3. Navbar Scroll Effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -626,7 +772,7 @@
             }
         });
 
-        // Scroll Reveal
+        // 4. Scroll Reveal
         const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -639,7 +785,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Lightbox
+        // 5. Lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
 
@@ -659,7 +805,31 @@
             }, 400);
         }
 
-        // Review Modal Netlify Asynchronous Post Wrapper
+        // 6. Booking Modal logic (Google Calendar System)
+        const bookingModal = document.getElementById('booking-modal');
+        
+        function openBookingModal() {
+            bookingModal.classList.remove('hidden');
+            setTimeout(() => bookingModal.classList.add('active'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeBookingModal() {
+            bookingModal.classList.remove('active');
+            setTimeout(() => {
+                bookingModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 400);
+        }
+
+        function submitBooking(e) {
+            e.preventDefault();
+            // Redirect directly to the requested Google Calendar Link
+            window.open('https://calendar.app.google/AVxidqQcqKRcsCQy9', '_blank');
+            closeBookingModal();
+        }
+
+        // 7. Review Modal logic
         const reviewModal = document.getElementById('review-modal');
         const reviewForm = document.getElementById('review-form');
         const reviewSuccess = document.getElementById('review-success');
@@ -683,38 +853,17 @@
 
         function submitReview(e) {
             e.preventDefault();
-            const form = e.target;
-            const data = new FormData(form);
-            
-            // Asynchronously post payload data securely directly into Netlify Forms internal parser
-            fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(data).toString()
-            })
-            .then(() => {
-                reviewForm.style.display = 'none';
-                reviewSuccess.classList.remove('hidden');
-            })
-            .catch((error) => alert("Σφάλμα συστήματος κατά την υποβολή: " + error));
+            reviewForm.style.display = 'none';
+            reviewSuccess.classList.remove('hidden');
         }
 
-        // Netlify Identity System Gateway Auto Redirect Handler
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
-
-        // Close Modals on Escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 if (lightbox.classList.contains('active')) closeLightbox();
+                if (bookingModal.classList.contains('active')) closeBookingModal();
                 if (reviewModal.classList.contains('active')) closeReviewModal();
             }
         });
-    </script></body></html>
+    </script>
+</body>
+</html>
